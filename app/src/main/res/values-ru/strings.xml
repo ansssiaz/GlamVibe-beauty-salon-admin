@@ -10,7 +10,7 @@
     <string name="arrow_forward_content_description">Стрелка вперед</string>
     <string name="profile">Мои данные</string>
     <string name="add_button_description">Записаться</string>
-    <string name="main_menu">Главная</string>
+    <string name="main_menu">Записи</string>
     <string name="profile_menu">Профиль</string>
     <string name="favourites_menu">Избранное</string>
     <string name="catalog_menu">Каталог</string>
@@ -65,7 +65,7 @@
     <string name="promotion_circle_content_description">Иконка акции</string>
     <string name="title_catalog">Каталог</string>
     <string name="catalog_services_textview">Выберите категорию</string>
-    <string name="main_page_title">Главная</string>
+    <string name="main_page_title">Ближайшие записи</string>
     <string name="catalog_title">Каталог</string>
     <string name="service_information_title">Информация об услуге</string>
     <string name="catalog_services_title">Каталог услуг</string>
@@ -84,12 +84,12 @@
     <string name="last_appointments_title">Прошлые записи</string>
     <string name="no_last_appointments_title">Нет записей</string>
     <string name="status_icon_content_description">Иконка статуса</string>
-    <string name="reschedule">Перенести</string>
+    <string name="confirm">Подтвердить</string>
     <string name="cancel">Отменить</string>
     <string name="menu_icon_content_description">Иконка меню</string>
     <string name="comment">Комментарий:</string>
-    <string name="cancel_reason_text">Вы уверены, что хотите отменить запись?</string>
-    <string name="reason_text">Введите текст</string>
+    <string name="cancel_reason_text">Вы уверены, что хотите отменить запись клиента?</string>
+    <string name="reason_text">Введите причину отмены</string>
     <string name="ok_button">Да</string>
     <string name="exit_button">Нет</string>
     <string name="reschedule_appointment_title">Выберите новую дату и время записи</string>
@@ -105,4 +105,7 @@
     <string name="suggestions_title">Предложения для Вас</string>
     <string name="promotions_title">Акции</string>
     <string name="promotion_services_title">Услуги</string>
+    <string name="complete">Отметить выполнение</string>
+    <string name="master_content_description">Мастер</string>
+    <string name="client_content_description">Клиент</string>
 </resources>

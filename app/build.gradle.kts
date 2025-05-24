@@ -6,11 +6,11 @@ plugins {
 }
 
 android {
-    namespace = "com.glamvibe.glamvibeclient"
+    namespace = "com.glamvibe.glamvibeadmin"
     compileSdk = 35
 
     defaultConfig {
-        applicationId = "com.glamvibe.glamvibeclient"
+        applicationId = "com.glamvibe.glamvibeadmin"
         minSdk = 26
         targetSdk = 35
         versionCode = 1
@@ -67,4 +67,5 @@ dependencies {
     implementation (libs.koin.android)
     implementation(libs.koin.core)
     implementation(libs.kotlinx.datetime)
+    implementation (libs.horizontalcalendar)
 }
