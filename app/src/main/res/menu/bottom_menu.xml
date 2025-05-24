@@ -1,17 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:id="@+id/mainPageFragment"
-        android:icon="@drawable/outline_home_24"
+        android:id="@+id/appointmentsFragment"
+        android:icon="@drawable/outline_event_note_24"
         android:title="@string/main_menu" />
     <item
-        android:id="@+id/catalogFragment"
-        android:icon="@drawable/baseline_manage_search_24"
+        android:id="@+id/menuFragment"
+        android:icon="@drawable/baseline_menu_24"
         android:title="@string/catalog_menu" />
-    <item
-        android:id="@+id/favouritesFragment"
-        android:icon="@drawable/outline_favorite_border_24"
-        android:title="@string/favourites_menu" />
+
     <item
         android:id="@+id/profileFragment"
         android:icon="@drawable/outline_account_circle_24"

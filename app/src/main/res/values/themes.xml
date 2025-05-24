@@ -1,13 +1,13 @@
 <resources>
     <!-- Base application theme. -->
-    <style name="Base.Theme.GlamVibeClient" parent="Theme.Material3.DayNight.NoActionBar">
+    <style name="Base.Theme.GlamVibeAdmin" parent="Theme.Material3.DayNight.NoActionBar">
         <item name="colorPrimaryDark">@color/mauve</item>
         <item name="android:windowIsTranslucent">true</item>
         <item name="colorPrimary">@color/brown</item>
         <item name="android:windowLightStatusBar">true</item>
     </style>
 
-    <style name="Theme.GlamVibeClient" parent="Base.Theme.GlamVibeClient" />
+    <style name="Theme.GlamVibeAdmin" parent="Base.Theme.GlamVibeAdmin" />
 
     <style name="BottomNavigationView">
         <item name="fontFamily">@font/raleway</item>

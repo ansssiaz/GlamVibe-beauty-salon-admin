@@ -3,26 +3,21 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/bottom_menu_navigation"
-    app:startDestination="@id/mainPageFragment">
+    app:startDestination="@id/appointmentsFragment">
 
     <fragment
-        android:id="@+id/mainPageFragment"
-        android:name="com.glamvibe.glamvibeclient.presentation.fragments.MainPageFragment"
+        android:id="@+id/appointmentsFragment"
+        android:name="com.glamvibe.glamvibeadmin.presentation.fragments.AppointmentsFragment"
         android:label="MainPageFragment"
-        tools:layout="@layout/fragment_main_page" />
+        tools:layout="@layout/fragment_appointments" />
     <fragment
         android:id="@+id/profileFragment"
-        android:name="com.glamvibe.glamvibeclient.presentation.fragments.ProfileFragment"
+        android:name="com.glamvibe.glamvibeadmin.presentation.fragments.ProfileFragment"
         android:label="ProfileFragment"
         tools:layout="@layout/fragment_profile" />
     <fragment
-        android:id="@+id/catalogFragment"
-        android:name="com.glamvibe.glamvibeclient.presentation.fragments.CatalogFragment"
+        android:id="@+id/menuFragment"
+        android:name="com.glamvibe.glamvibeadmin.presentation.fragments.MenuFragment"
         android:label="CatalogFragment"
-        tools:layout="@layout/fragment_catalog" />
-    <fragment
-        android:id="@+id/favouritesFragment"
-        android:name="com.glamvibe.glamvibeclient.presentation.fragments.FavouritesFragment"
-        android:label="FavouritesFragment"
-        tools:layout="@layout/fragment_favourites" />
+        tools:layout="@layout/fragment_menu" />
 </navigation>

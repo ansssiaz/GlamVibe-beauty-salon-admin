@@ -19,6 +19,6 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "GlamVibe Client"
+rootProject.name = "GlamVibe Admin"
 include(":app")
  

@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/bottomMenuFragment"
-        android:name="com.glamvibe.glamvibeclient.presentation.fragments.BottomMenuFragment"
+        android:name="com.glamvibe.glamvibeadmin.presentation.fragments.BottomMenuFragment"
         android:label="fragment_bottom_menu"
         tools:layout="@layout/fragment_bottom_menu" >
         <action
@@ -37,7 +37,7 @@
     </fragment>
     <fragment
         android:id="@+id/newAppointmentFragment"
-        android:name="com.glamvibe.glamvibeclient.presentation.fragments.NewAppointmentFragment"
+        android:name="com.glamvibe.glamvibeadmin.presentation.fragments.NewAppointmentFragment"
         android:label="NewAppointmentFragment"
         tools:layout="@layout/fragment_new_appointment">
         <action
@@ -46,22 +46,22 @@
     </fragment>
     <fragment
         android:id="@+id/promotionFragment"
-        android:name="com.glamvibe.glamvibeclient.presentation.fragments.PromotionFragment"
+        android:name="com.glamvibe.glamvibeadmin.presentation.fragments.PromotionFragment"
         android:label="PromotionFragment"
         tools:layout="@layout/fragment_promotion"/>
     <fragment
         android:id="@+id/serviceInformationFragment"
-        android:name="com.glamvibe.glamvibeclient.presentation.fragments.ServiceInformationFragment"
+        android:name="com.glamvibe.glamvibeadmin.presentation.fragments.ServiceInformationFragment"
         android:label="ServiceInformationFragment"
         tools:layout="@layout/fragment_service_information"/>
     <fragment
         android:id="@+id/profileDataFragment"
-        android:name="com.glamvibe.glamvibeclient.presentation.fragments.ProfileDataFragment"
+        android:name="com.glamvibe.glamvibeadmin.presentation.fragments.ProfileDataFragment"
         android:label="FormFragment"
         tools:layout="@layout/fragment_profile_data"/>
     <fragment
         android:id="@+id/authorizationFragment"
-        android:name="com.glamvibe.glamvibeclient.presentation.fragments.AuthorizationFragment"
+        android:name="com.glamvibe.glamvibeadmin.presentation.fragments.AuthorizationFragment"
         android:label="AuthorizationFragment"
         tools:layout="@layout/fragment_authorization">
         <action
@@ -73,22 +73,18 @@
     </fragment>
     <fragment
         android:id="@+id/registrationFragment"
-        android:name="com.glamvibe.glamvibeclient.presentation.fragments.RegistrationFragment"
+        android:name="com.glamvibe.glamvibeadmin.presentation.fragments.RegistrationFragment"
         android:label="RegistrationFragment"
         tools:layout="@layout/fragment_registration">
     </fragment>
     <fragment
         android:id="@+id/appointmentsFragment"
-        android:name="com.glamvibe.glamvibeclient.presentation.fragments.AppointmentsFragment"
+        android:name="com.glamvibe.glamvibeadmin.presentation.fragments.ClientAppointmentsFragment"
         android:label="AppointmentsFragment"
-        tools:layout="@layout/fragment_appointments">
-        <action
-            android:id="@+id/action_appointmentsFragment_to_rescheduleAppointmentFragment"
-            app:destination="@id/rescheduleAppointmentFragment" />
-    </fragment>
+        tools:layout="@layout/fragment_client_appointments"/>
     <fragment
         android:id="@+id/servicesCatalogFragment"
-        android:name="com.glamvibe.glamvibeclient.presentation.fragments.ServicesCatalogFragment"
+        android:name="com.glamvibe.glamvibeadmin.presentation.fragments.ServicesCatalogFragment"
         android:label="ServicesCatalogFragment"
         tools:layout="@layout/fragment_catalog_services">
         <action
@@ -97,12 +93,7 @@
     </fragment>
     <fragment
         android:id="@+id/mastersCatalogFragment"
-        android:name="com.glamvibe.glamvibeclient.presentation.fragments.MastersCatalogFragment"
+        android:name="com.glamvibe.glamvibeadmin.presentation.fragments.MastersCatalogFragment"
         android:label="MastersCatalogFragment"
         tools:layout="@layout/fragment_catalog_masters"/>
-    <fragment
-        android:id="@+id/rescheduleAppointmentFragment"
-        android:name="com.glamvibe.glamvibeclient.presentation.fragments.RescheduleAppointmentFragment"
-        android:label="RescheduleAppointmentFragment"
-        tools:layout="@layout/fragment_reschedule_appointment"/>
 </navigation>

@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name" translatable="false">GlamVibe Client</string>
+    <string name="app_name" translatable="false">GlamVibe Admin</string>
     <string name="authorization_textview">Enter login and password</string>
     <string name="login_hint">Login</string>
     <string name="password_hint">Password</string>
@@ -10,7 +10,7 @@
     <string name="arrow_forward_content_description">Arrow forward</string>
     <string name="profile">My data</string>
     <string name="add_button_description">Add appointment</string>
-    <string name="main_menu">Main</string>
+    <string name="main_menu">Appointments</string>
     <string name="profile_menu">Profile</string>
     <string name="favourites_menu">Favourites</string>
     <string name="catalog_menu">Catalog</string>
@@ -66,7 +66,7 @@
     <string name="promotion_circle_content_description">Promotion icon</string>
     <string name="title_catalog">Catalog</string>
     <string name="catalog_services_textview">Choose category</string>
-    <string name="main_page_title">Main</string>
+    <string name="main_page_title">Upcoming appointments</string>
     <string name="catalog_title">Catalog</string>
     <string name="service_information_title">Information about service</string>
     <string name="catalog_services_title">Catalog of services</string>
@@ -85,12 +85,12 @@
     <string name="last_appointments_title">Last appointments</string>
     <string name="no_last_appointments_title">You don\'t have last appointments.</string>
     <string name="status_icon_content_description">Status icon</string>
-    <string name="reschedule">Reschedule</string>
+    <string name="confirm">Confirm</string>
     <string name="cancel">Cancel</string>
     <string name="menu_icon_content_description">Menu icon</string>
     <string name="comment">Комментарий</string>
-    <string name="cancel_reason_text">Are you sure you want to cancel the appointment?</string>
-    <string name="reason_text">Enter text</string>
+    <string name="cancel_reason_text">Are you sure you want to cancel the client\'s appointment?</string>
+    <string name="reason_text">Enter the reason for cancellation</string>
     <string name="ok_button">Yes</string>
     <string name="exit_button">No</string>
     <string name="reschedule_appointment_title">Выберите новую дату и время записи</string>
@@ -106,4 +106,7 @@
     <string name="suggestions_title">Предложения для вас</string>
     <string name="promotions_title">Акции</string>
     <string name="promotion_services_title">Услуги</string>
+    <string name="complete">Complete</string>
+    <string name="master_content_description">Мастер</string>
+    <string name="client_content_description">Клиент</string>
 </resources>
