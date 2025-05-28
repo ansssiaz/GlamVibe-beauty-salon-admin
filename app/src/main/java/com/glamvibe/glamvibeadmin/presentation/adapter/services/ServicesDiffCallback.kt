@@ -9,14 +9,4 @@ class ServicesDiffCallback : DiffUtil.ItemCallback<Service>() {
 
     override fun areContentsTheSame(oldItem: Service, newItem: Service): Boolean =
         oldItem == newItem
-
-    override fun getChangePayload(oldItem: Service, newItem: Service): Any? =
-        ServicePayload(
-            favourite = newItem.isFavourite.takeIf {
-                it != oldItem.isFavourite
-            }
-        )
-            .takeIf {
-                it.isNotEmpty()
-            }
 }

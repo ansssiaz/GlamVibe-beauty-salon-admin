@@ -1,6 +1,6 @@
 package com.glamvibe.glamvibeadmin.data.model.response
 
-import com.glamvibe.glamvibeadmin.domain.model.Administrator
+import com.glamvibe.glamvibeadmin.domain.model.User
 import kotlinx.datetime.Clock
 import kotlinx.datetime.LocalDate
 import kotlinx.datetime.TimeZone
@@ -9,7 +9,7 @@ import kotlinx.serialization.Contextual
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class AdministratorResponse(
+data class UserResponse(
     val id: Int = 0,
     val lastname: String = "",
     val name: String = "",
@@ -21,7 +21,7 @@ data class AdministratorResponse(
     val passwordHash: String = "",
     val refreshToken: String? = null,
     val refreshTokenExpirationTime: Long? = null,
-    val role: String = "CLIENT",
+    val role: String = "ADMINISTRATOR",
     val favouritesIds: List<Int?> = emptyList<Int>(),
     var form: Form? = null,
 )
@@ -38,7 +38,7 @@ data class TokenPair(
     val refreshToken: String,
 )
 
-fun AdministratorResponse.toAdministrator() = Administrator(
+fun UserResponse.toUser() = User(
     id = id,
     lastname = lastname,
     name = name,

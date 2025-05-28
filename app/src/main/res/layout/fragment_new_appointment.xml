@@ -13,10 +13,42 @@
         android:background="@color/ivory">
 
         <TextView
-            android:id="@+id/make_appointment_service_title"
+            android:id="@+id/make_appointment_client_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
+            android:fontFamily="@font/raleway"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
+            android:text="@string/make_appointment_client_title"
+            android:textColor="@color/brown"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Spinner
+            android:id="@+id/client_spinner"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
+            android:background="@drawable/spinner_background"
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp"
+            android:pointerIcon="arrow"
+            android:popupBackground="@color/champagne"
+            android:spinnerMode="dropdown"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/make_appointment_client_title" />
+
+        <TextView
+            android:id="@+id/make_appointment_service_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
             android:fontFamily="@font/raleway"
             android:paddingStart="16dp"
             android:paddingEnd="16dp"
@@ -25,7 +57,7 @@
             android:textSize="20sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toBottomOf="@id/client_spinner" />
 
         <Spinner
             android:id="@+id/service_spinner"

@@ -9,8 +9,7 @@ import kotlinx.datetime.TimeZone
 import kotlinx.datetime.toLocalDateTime
 import kotlinx.serialization.Contextual
 
-
-data class Administrator(
+data class User(
     val id: Int = 0,
     val lastname: String = "",
     val name: String = "",
@@ -25,7 +24,7 @@ data class Administrator(
     val refreshToken: String? = null,
 )
 
-fun Administrator.toNewAdministrator(formData: String?) = NewAdministrator(
+fun User.toNewAdministrator(formData: String?) = NewAdministrator(
     lastname = lastname,
     name = name,
     patronymic = patronymic,
@@ -38,7 +37,7 @@ fun Administrator.toNewAdministrator(formData: String?) = NewAdministrator(
     formData = formData,
 )
 
-fun Administrator.toUpdatedAdministrator() = UpdatedAdministrator(
+fun User.toUpdatedAdministrator() = UpdatedAdministrator(
     lastname = lastname,
     name = name,
     patronymic = patronymic,

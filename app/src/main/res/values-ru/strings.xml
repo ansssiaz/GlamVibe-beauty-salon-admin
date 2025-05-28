@@ -65,7 +65,7 @@
     <string name="promotion_circle_content_description">Иконка акции</string>
     <string name="title_catalog">Каталог</string>
     <string name="catalog_services_textview">Выберите категорию</string>
-    <string name="main_page_title">Ближайшие записи</string>
+    <string name="main_page_title">Записи</string>
     <string name="catalog_title">Каталог</string>
     <string name="service_information_title">Информация об услуге</string>
     <string name="catalog_services_title">Каталог услуг</string>
@@ -99,13 +99,14 @@
     <string name="available_time_title">Доступное время</string>
     <string name="no_available_time_title">В выбранный день нет доступных часов для записи</string>
     <string name="make_appointment_button">Записаться</string>
-    <string name="make_appointment_service_title">1. Услуга</string>
-    <string name="make_appointment_master_title">2. Мастер</string>
-    <string name="make_appointment_datetime_title">3. Дата и время записи</string>
+    <string name="make_appointment_service_title">2. Услуга</string>
+    <string name="make_appointment_master_title">3. Мастер</string>
+    <string name="make_appointment_datetime_title">4. Дата и время записи</string>
     <string name="suggestions_title">Предложения для Вас</string>
     <string name="promotions_title">Акции</string>
     <string name="promotion_services_title">Услуги</string>
     <string name="complete">Отметить выполнение</string>
     <string name="master_content_description">Мастер</string>
     <string name="client_content_description">Клиент</string>
+    <string name="make_appointment_client_title">1. Клиент</string>
 </resources>

@@ -26,8 +26,8 @@ val viewModelModule = module {
         ServicesViewModel(get())
     }
 
-    viewModel { (serviceId: Int, clientId: Int) ->
-        ServiceViewModel(get(), serviceId, clientId)
+    viewModel { (serviceId: Int) ->
+        ServiceViewModel(get(), serviceId)
     }
 
     viewModel {
@@ -38,8 +38,8 @@ val viewModelModule = module {
         ClientAppointmentsViewModel(get(), clientId)
     }
 
-    viewModel { (clientId: Int) ->
-        NewAppointmentViewModel(get(), get(), get(), clientId)
+    viewModel {
+        NewAppointmentViewModel(get(), get(), get(), get())
     }
 
     viewModel {

@@ -2,8 +2,8 @@ package com.glamvibe.glamvibeadmin.presentation.viewmodel.administrator
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.glamvibe.glamvibeadmin.data.model.response.toAdministrator
-import com.glamvibe.glamvibeadmin.domain.model.Administrator
+import com.glamvibe.glamvibeadmin.data.model.response.toUser
+import com.glamvibe.glamvibeadmin.domain.model.User
 import com.glamvibe.glamvibeadmin.domain.model.toUpdatedAdministrator
 import com.glamvibe.glamvibeadmin.domain.repository.administrator.AdministratorLocalRepository
 import com.glamvibe.glamvibeadmin.domain.repository.administrator.AdministratorNetworkRepository
@@ -25,7 +25,7 @@ class AdministratorViewModel(
         val tokenPair = localRepository.checkTokenPair()
         val administrator =
             if (tokenPair.accessToken.isNotEmpty() && tokenPair.refreshToken.isNotEmpty())
-                Administrator(
+                User(
                     accessToken = tokenPair.accessToken,
                     refreshToken = tokenPair.refreshToken
                 ) else null
@@ -39,7 +39,7 @@ class AdministratorViewModel(
         viewModelScope.launch {
             try {
                 val tokenPair = networkRepository.logIn(login, password)
-                val administrator = Administrator(
+                val administrator = User(
                     accessToken = tokenPair.accessToken,
                     refreshToken = tokenPair.refreshToken
                 )
@@ -79,7 +79,7 @@ class AdministratorViewModel(
             viewModelScope.launch {
                 try {
                     val administrator =
-                        networkRepository.getProfileInformation(refreshToken).toAdministrator()
+                        networkRepository.getProfileInformation(refreshToken).toUser()
                     _state.update { it.copy(administrator = administrator, status = Status.Idle) }
                 } catch (e: Exception) {
                     _state.update {
@@ -105,7 +105,7 @@ class AdministratorViewModel(
 
         viewModelScope.launch {
             try {
-                val administrator = Administrator(
+                val administrator = User(
                     lastname = lastname,
                     name = name,
                     patronymic = patronymic,
@@ -117,7 +117,7 @@ class AdministratorViewModel(
                 )
                 val updatedAdministrator = networkRepository.updateProfileInformation(
                     id, administrator.toUpdatedAdministrator()
-                ).toAdministrator()
+                ).toUser()
 
                 _state.update {
                     it.copy(

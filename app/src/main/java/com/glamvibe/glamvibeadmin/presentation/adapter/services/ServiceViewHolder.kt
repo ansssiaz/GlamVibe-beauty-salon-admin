@@ -19,12 +19,6 @@ class ServiceViewHolder(private val binding: CardServiceBinding) :
     private val radius =
         this.itemView.context.resources.getDimensionPixelSize(R.dimen.corner_radius)
 
-    fun bind(payload: ServicePayload) {
-        if (payload.favourite != null) {
-            updateFavourite(payload.favourite)
-        }
-    }
-
     @SuppressLint("SetTextI18n")
     fun bind(service: Service) {
         binding.serviceName.text = service.name
@@ -47,8 +41,6 @@ class ServiceViewHolder(private val binding: CardServiceBinding) :
 
         binding.duration.text = service.duration.toString()
 
-        updateFavourite(service.isFavourite)
-
         val widthPx = dpToPx(250, binding.root.context)
         val heightPx = dpToPx(250, binding.root.context)
 
@@ -70,15 +62,5 @@ class ServiceViewHolder(private val binding: CardServiceBinding) :
                 )
                 .into(binding.serviceImage)
         }
-    }
-
-    private fun updateFavourite(isFavourite: Boolean) {
-        binding.favourite.setIconResource(
-            if (isFavourite) {
-                R.drawable.baseline_favorite_24
-            } else {
-                R.drawable.baseline_favorite_border_24
-            }
-        )
     }
 }

@@ -1,6 +1,5 @@
 package com.glamvibe.glamvibeadmin.presentation.fragments
 
-import android.app.AlertDialog
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -19,7 +18,6 @@ import com.glamvibe.glamvibeadmin.presentation.adapter.appointments.LastAppointm
 import com.glamvibe.glamvibeadmin.presentation.viewmodel.clientAppointments.ClientAppointmentsViewModel
 import com.glamvibe.glamvibeadmin.presentation.viewmodel.administrator.AdministratorViewModel
 import com.glamvibe.glamvibeadmin.presentation.viewmodel.toolbar.ToolbarViewModel
-import com.google.android.material.button.MaterialButton
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import org.koin.androidx.viewmodel.ext.android.activityViewModel
@@ -45,13 +43,6 @@ class ClientAppointmentsFragment : Fragment() {
             parametersOf(
                 clientId
             )
-        }
-
-        requireActivity().supportFragmentManager.setFragmentResultListener(
-            NewAppointmentFragment.APPOINTMENT_CREATED_RESULT,
-            viewLifecycleOwner
-        ) { _, _ ->
-            clientAppointmentsViewModel.getAppointments()
         }
 
         val currentAppointmentsAdapter = CurrentAppointmentsAdapter(

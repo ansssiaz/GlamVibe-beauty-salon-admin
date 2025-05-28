@@ -2,8 +2,8 @@ package com.glamvibe.glamvibeadmin.presentation.viewmodel.newAdministrator
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.glamvibe.glamvibeadmin.data.model.response.toAdministrator
-import com.glamvibe.glamvibeadmin.domain.model.Administrator
+import com.glamvibe.glamvibeadmin.data.model.response.toUser
+import com.glamvibe.glamvibeadmin.domain.model.User
 import com.glamvibe.glamvibeadmin.domain.model.toNewAdministrator
 import com.glamvibe.glamvibeadmin.domain.repository.administrator.AdministratorNetworkRepository
 import com.glamvibe.glamvibeadmin.utils.Status
@@ -34,7 +34,7 @@ class NewAdministratorViewModel(
 
         viewModelScope.launch {
             try {
-                val administrator = Administrator(
+                val administrator = User(
                     lastname = lastname,
                     name = name,
                     patronymic = patronymic,
@@ -47,7 +47,7 @@ class NewAdministratorViewModel(
 
                 val newAdministrator = administrator.toNewAdministrator(formData)
                 val registeredAdministrator =
-                    networkRepository.register(newAdministrator).toAdministrator()
+                    networkRepository.register(newAdministrator).toUser()
 
                 _state.update {
                     it.copy(

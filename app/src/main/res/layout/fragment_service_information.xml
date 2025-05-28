@@ -50,18 +50,6 @@
             tools:ignore="TextContrastCheck"
             tools:text="-15%" />
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/favourite"
-            style="@style/Widget.Material3.Button.IconButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:contentDescription="@string/service_favourite_content_description"
-            app:icon="@drawable/baseline_favorite_border_24"
-            app:iconSize="@dimen/icon_size"
-            app:iconTint="@color/mauve"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
         <TextView
             android:id="@+id/service_name"
             android:layout_width="match_parent"
@@ -157,8 +145,10 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="10dp"
             android:layout_marginEnd="16dp"
+            android:layout_marginBottom="10dp"
             android:fontFamily="@font/raleway"
             android:textSize="14sp"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/price"
@@ -170,22 +160,5 @@
 \n2. Кутикула не отрезается, а сошлифовывается, что безопаснее с точки зрения гигиены.
 \n3. Процедура снижает риск расслаивания ногтей.
 \n4. Специальные насадки деликатно и мягко удаляют огрубевшую кожу." />
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/make_appointment_button"
-            android:layout_width="wrap_content"
-            android:layout_height="60dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginBottom="10dp"
-            android:backgroundTint="@color/mauve"
-            android:fontFamily="@font/raleway"
-            android:text="@string/make_appointment_button"
-            android:textColor="@color/ivory"
-            android:textSize="17sp"
-            android:layout_marginEnd="16dp"
-            app:cornerRadius="4dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/service_description"
-            tools:ignore="VisualLintButtonSize,TextContrastCheck,TextSizeCheck" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

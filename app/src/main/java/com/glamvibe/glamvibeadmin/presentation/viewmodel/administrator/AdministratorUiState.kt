@@ -1,10 +1,10 @@
 package com.glamvibe.glamvibeadmin.presentation.viewmodel.administrator
 
-import com.glamvibe.glamvibeadmin.domain.model.Administrator
+import com.glamvibe.glamvibeadmin.domain.model.User
 import com.glamvibe.glamvibeadmin.utils.Status
 
 data class AdministratorUiState(
-    val administrator: Administrator? = null,
+    val administrator: User? = null,
     val status: Status = Status.Idle,
 ){
     val isError: Boolean

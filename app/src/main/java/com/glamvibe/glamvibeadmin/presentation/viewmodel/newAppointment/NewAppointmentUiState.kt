@@ -4,6 +4,7 @@ import com.glamvibe.glamvibeadmin.domain.model.Appointment
 import com.glamvibe.glamvibeadmin.domain.model.CurrentAppointment
 import com.glamvibe.glamvibeadmin.domain.model.Master
 import com.glamvibe.glamvibeadmin.domain.model.Service
+import com.glamvibe.glamvibeadmin.domain.model.User
 import com.glamvibe.glamvibeadmin.domain.model.WorkingDay
 import com.glamvibe.glamvibeadmin.utils.Status
 import kotlinx.datetime.LocalDate
@@ -13,7 +14,10 @@ data class NewAppointmentUiState(
     val appointment: Appointment? = null,
     val services: List<Service> = emptyList(),
     val masters: List<Master> = emptyList(),
+    val clients: List<User> = emptyList(),
     val mastersNames: List<String> = emptyList(),
+    val clientsNames: List<String> = emptyList(),
+    val lastSelectedClient: String? = null,
     val lastSelectedService: String? = null,
     val lastSelectedMaster: String? = null,
     val filteredMasters: List<Master> = emptyList(),

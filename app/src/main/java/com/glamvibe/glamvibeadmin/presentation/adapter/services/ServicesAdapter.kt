@@ -24,25 +24,10 @@ class ServicesAdapter(
             listener.onServiceImageClicked(getItem(viewHolder.bindingAdapterPosition))
         }
 
-        binding.favourite.setOnClickListener {
-            listener.onFavouriteClicked(getItem(viewHolder.bindingAdapterPosition))
-        }
         return viewHolder
     }
 
     override fun onBindViewHolder(holder: ServiceViewHolder, position: Int) {
         holder.bind(getItem(position))
-    }
-
-    override fun onBindViewHolder(holder: ServiceViewHolder, position: Int, payloads: List<Any>) {
-        if (payloads.isNotEmpty()) {
-            payloads.forEach {
-                if (it is ServicePayload) {
-                    holder.bind(it)
-                }
-            }
-        } else {
-            onBindViewHolder(holder, position)
-        }
     }
 }
