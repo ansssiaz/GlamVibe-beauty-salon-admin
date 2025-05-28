@@ -11,8 +11,7 @@ import kotlinx.coroutines.launch
 
 class ServiceViewModel(
     private val servicesRepository: ServicesRepository,
-    private val serviceId: Int,
-    private val clientId: Int
+    private val serviceId: Int
 ) : ViewModel() {
     private var _state = MutableStateFlow(ServiceUiState())
     val state = _state.asStateFlow()
@@ -26,7 +25,7 @@ class ServiceViewModel(
 
         viewModelScope.launch {
             try {
-                val service = servicesRepository.getService(serviceId, clientId)
+                val service = servicesRepository.getService(serviceId)
                 _state.update { state ->
                     state.copy(
                         service = service,

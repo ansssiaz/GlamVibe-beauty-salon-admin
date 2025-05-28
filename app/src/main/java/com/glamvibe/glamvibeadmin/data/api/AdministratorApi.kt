@@ -1,6 +1,6 @@
 package com.glamvibe.glamvibeadmin.data.api
 
-import com.glamvibe.glamvibeadmin.data.model.response.AdministratorResponse
+import com.glamvibe.glamvibeadmin.data.model.response.UserResponse
 import com.glamvibe.glamvibeadmin.data.model.response.TokenPair
 import com.glamvibe.glamvibeadmin.data.model.request.LogInAdministrator
 import com.glamvibe.glamvibeadmin.data.model.request.NewAdministrator
@@ -13,7 +13,7 @@ import retrofit2.http.Path
 
 interface AdministratorApi {
     @POST("auth/registration")
-    suspend fun register(@Body newAdministrator: NewAdministrator): AdministratorResponse
+    suspend fun register(@Body newAdministrator: NewAdministrator): UserResponse
 
     @POST("auth/login")
     suspend fun logIn(@Body logInAdministrator: LogInAdministrator): TokenPair
@@ -25,8 +25,8 @@ interface AdministratorApi {
     suspend fun logOut(@Path("id") id: Int)
 
     @POST("me")
-    suspend fun getProfileInformation(@Body refreshToken: RefreshToken): AdministratorResponse
+    suspend fun getProfileInformation(@Body refreshToken: RefreshToken): UserResponse
 
     @PUT("me/{id}")
-    suspend fun updateProfileInformation(@Path("id") id: Int, @Body newClient: UpdatedAdministrator): AdministratorResponse
+    suspend fun updateProfileInformation(@Path("id") id: Int, @Body newClient: UpdatedAdministrator): UserResponse
 }

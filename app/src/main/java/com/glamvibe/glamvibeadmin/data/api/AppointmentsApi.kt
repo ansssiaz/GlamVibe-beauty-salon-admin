@@ -19,27 +19,17 @@ interface AppointmentsApi {
     @GET("appointments/{clientId}")
     suspend fun getAppointmentsForClient(@Path("clientId") clientId: Int): List<Appointment>
 
-    @GET("appointments/{appointmentId}/clients/{clientId}")
-    suspend fun getAppointment(
-        @Path("appointmentId") appointmentId: Int,
-        @Path("clientId") clientId: Int
-    ): Appointment
+    @GET("appointments/{appointmentId}")
+    suspend fun getAppointment(@Path("appointmentId") appointmentId: Int): Appointment
 
-    @POST("appointments/{clientId}")
-    suspend fun makeAppointment(
-        @Path("clientId") clientId: Int,
-        @Body newAppointment: NewAppointment
-    ): Appointment
+    @POST("appointments")
+    suspend fun makeAppointment(@Body newAppointment: NewAppointment): Appointment
 
     @POST("appointments/confirm/{appointmentId}")
-    suspend fun confirmAppointment(
-        @Path("appointmentId") appointmentId: Int,
-    ): Appointment
+    suspend fun confirmAppointment(@Path("appointmentId") appointmentId: Int): Appointment
 
     @POST("appointments/complete/{appointmentId}")
-    suspend fun completeAppointment(
-        @Path("appointmentId") appointmentId: Int,
-    ): Appointment
+    suspend fun completeAppointment(@Path("appointmentId") appointmentId: Int): Appointment
 
     @POST("appointments/admin/cancel/{appointmentId}")
     suspend fun cancelAppointment(

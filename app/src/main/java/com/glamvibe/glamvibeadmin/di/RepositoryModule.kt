@@ -3,12 +3,14 @@ package com.glamvibe.glamvibeadmin.di
 import com.glamvibe.glamvibeadmin.data.repository.appointments.AppointmentsRepositoryImpl
 import com.glamvibe.glamvibeadmin.data.repository.administrator.AdministratorLocalRepositoryImpl
 import com.glamvibe.glamvibeadmin.data.repository.administrator.AdministratorNetworkRepositoryImpl
+import com.glamvibe.glamvibeadmin.data.repository.clients.ClientsRepositoryImpl
 import com.glamvibe.glamvibeadmin.data.repository.masters.MastersRepositoryImpl
 import com.glamvibe.glamvibeadmin.data.repository.promotions.PromotionRepositoryImpl
 import com.glamvibe.glamvibeadmin.data.repository.services.ServicesRepositoryImpl
 import com.glamvibe.glamvibeadmin.domain.repository.appointments.AppointmentsRepository
 import com.glamvibe.glamvibeadmin.domain.repository.administrator.AdministratorLocalRepository
 import com.glamvibe.glamvibeadmin.domain.repository.administrator.AdministratorNetworkRepository
+import com.glamvibe.glamvibeadmin.domain.repository.clients.ClientsRepository
 import com.glamvibe.glamvibeadmin.domain.repository.masters.MastersRepository
 import com.glamvibe.glamvibeadmin.domain.repository.promotions.PromotionsRepository
 import com.glamvibe.glamvibeadmin.domain.repository.services.ServicesRepository
@@ -21,6 +23,7 @@ val repositoryModule = module {
     single { provideMastersRepository(get()) }
     single { provideAppointmentsRepository(get()) }
     single { providePromotionsRepository(get()) }
+    single { provideClientsRepository(get()) }
 
     single<AdministratorNetworkRepository> {
         return@single AdministratorNetworkRepositoryImpl(get())
@@ -42,8 +45,12 @@ val repositoryModule = module {
         return@single AppointmentsRepositoryImpl(get())
     }
 
-    single<PromotionsRepository>{
+    single<PromotionsRepository> {
         return@single PromotionRepositoryImpl(get())
+    }
+
+    single<ClientsRepository> {
+        return@single ClientsRepositoryImpl(get())
     }
 }
 
@@ -63,4 +70,7 @@ private fun provideAppointmentsRepository(repository: AppointmentsRepositoryImpl
     repository
 
 private fun providePromotionsRepository(repository: PromotionRepositoryImpl): PromotionsRepository =
+    repository
+
+private fun provideClientsRepository(repository: ClientsRepositoryImpl): ClientsRepository =
     repository

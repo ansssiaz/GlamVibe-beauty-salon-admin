@@ -17,19 +17,16 @@ import com.glamvibe.glamvibeadmin.R
 import com.glamvibe.glamvibeadmin.databinding.FragmentCatalogServicesBinding
 import com.glamvibe.glamvibeadmin.domain.model.Service
 import com.glamvibe.glamvibeadmin.presentation.adapter.services.ServicesAdapter
-import com.glamvibe.glamvibeadmin.presentation.viewmodel.administrator.AdministratorViewModel
 import com.glamvibe.glamvibeadmin.presentation.viewmodel.services.ServicesViewModel
 import com.glamvibe.glamvibeadmin.presentation.viewmodel.toolbar.ToolbarViewModel
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
-import org.koin.androidx.viewmodel.ext.android.activityViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class ServicesCatalogFragment : Fragment() {
     private lateinit var binding: FragmentCatalogServicesBinding
     private val toolbarViewModel: ToolbarViewModel by activityViewModels<ToolbarViewModel>()
     private val servicesViewModel: ServicesViewModel by viewModel<ServicesViewModel>()
-    private val administratorViewModel: AdministratorViewModel by activityViewModel<AdministratorViewModel>()
     private lateinit var categoriesAdapter: ArrayAdapter<String>
     private var currentCategories: List<String> = emptyList()
 
@@ -67,15 +64,6 @@ class ServicesCatalogFragment : Fragment() {
                 servicesViewModel.filterServicesByCategory(null)
             }
         }
-
-        administratorViewModel.state
-            .flowWithLifecycle(viewLifecycleOwner.lifecycle)
-            .onEach {
-                it.administrator?.id?.let { clientId ->
-                    servicesViewModel.getServices(clientId)
-                }
-            }
-            .launchIn(viewLifecycleOwner.lifecycleScope)
 
         val servicesAdapter = ServicesAdapter(
             object : ServicesAdapter.ServicesListener {

@@ -53,11 +53,6 @@ class ServiceInformationFragment : Fragment() {
 
         val serviceViewModel by viewModel<ServiceViewModel> { parametersOf(serviceId, clientId) }
 
-        binding.favourite.setOnClickListener {
-            administratorViewModel.state.value.administrator?.let {
-
-            }
-        }
 
         serviceViewModel.state
             .flowWithLifecycle(viewLifecycleOwner.lifecycle)
@@ -115,14 +110,6 @@ class ServiceInformationFragment : Fragment() {
                     binding.duration.text = state.service.duration.toString()
 
                     binding.serviceDescription.text = state.service.description
-
-                    binding.favourite.setIconResource(
-                        if (state.service.isFavourite) {
-                            R.drawable.baseline_favorite_24
-                        } else {
-                            R.drawable.baseline_favorite_border_24
-                        }
-                    )
                 }
             }
             .launchIn(viewLifecycleOwner.lifecycleScope)

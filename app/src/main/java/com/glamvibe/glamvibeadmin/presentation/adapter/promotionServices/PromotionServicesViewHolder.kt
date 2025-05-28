@@ -14,19 +14,12 @@ import com.bumptech.glide.request.RequestOptions
 import com.glamvibe.glamvibeadmin.R
 import com.glamvibe.glamvibeadmin.databinding.CardPromotionServiceBinding
 import com.glamvibe.glamvibeadmin.domain.model.Service
-import com.glamvibe.glamvibeadmin.presentation.adapter.services.ServicePayload
 import com.glamvibe.glamvibeadmin.utils.dpToPx
 
 class PromotionServicesViewHolder(private val binding: CardPromotionServiceBinding) :
     RecyclerView.ViewHolder(binding.root) {
     private val radius =
         this.itemView.context.resources.getDimensionPixelSize(R.dimen.corner_radius)
-
-    fun bind(payload: ServicePayload) {
-        if (payload.favourite != null) {
-            updateFavourite(payload.favourite)
-        }
-    }
 
     @SuppressLint("SetTextI18n")
     fun bind(service: Service) {
@@ -47,8 +40,6 @@ class PromotionServicesViewHolder(private val binding: CardPromotionServiceBindi
             binding.oldPriceRuble.isVisible = false
             binding.promotion.isVisible = false
         }
-
-        updateFavourite(service.isFavourite)
 
         binding.duration.text = service.duration.toString()
 
@@ -77,15 +68,5 @@ class PromotionServicesViewHolder(private val binding: CardPromotionServiceBindi
                 )
                 .into(binding.serviceImage)
         }
-    }
-
-    private fun updateFavourite(isFavourite: Boolean) {
-        binding.favourite.setIconResource(
-            if (isFavourite) {
-                R.drawable.baseline_favorite_24
-            } else {
-                R.drawable.baseline_favorite_border_24
-            }
-        )
     }
 }

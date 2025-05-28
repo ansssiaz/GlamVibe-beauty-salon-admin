@@ -16,25 +16,20 @@ class AppointmentsRepositoryImpl(private val api: AppointmentsApi) : Appointment
         day: Int
     ): List<Appointment> = api.getAppointmentsForDate(year, month, day)
 
-    override suspend fun getAppointment(appointmentId: Int, clientId: Int): Appointment =
-        api.getAppointment(appointmentId, clientId)
+    override suspend fun getAppointment(appointmentId: Int): Appointment =
+        api.getAppointment(appointmentId)
 
-    override suspend fun makeAppointment(
-        clientId: Int,
-        newAppointment: NewAppointment
-    ): Appointment = api.makeAppointment(clientId, newAppointment)
+    override suspend fun makeAppointment(newAppointment: NewAppointment): Appointment =
+        api.makeAppointment(newAppointment)
 
-    override suspend fun confirmAppointment(appointmentId: Int): Appointment = api.confirmAppointment(appointmentId)
+    override suspend fun confirmAppointment(appointmentId: Int): Appointment =
+        api.confirmAppointment(appointmentId)
 
-    override suspend fun completeAppointment(appointmentId: Int): Appointment = api.completeAppointment(appointmentId)
+    override suspend fun completeAppointment(appointmentId: Int): Appointment =
+        api.completeAppointment(appointmentId)
 
     override suspend fun cancelAppointment(
         appointmentId: Int,
         comment: CommentForCancellation
-    ): Appointment =
-        api.cancelAppointment(
-            appointmentId,
-            comment
-        )
-
+    ): Appointment = api.cancelAppointment(appointmentId, comment)
 }

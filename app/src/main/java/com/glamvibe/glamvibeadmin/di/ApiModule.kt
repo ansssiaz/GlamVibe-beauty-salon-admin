@@ -4,6 +4,7 @@ import com.glamvibe.glamvibeadmin.BuildConfig
 import com.glamvibe.glamvibeadmin.data.api.AppointmentsApi
 import com.glamvibe.glamvibeadmin.data.api.AuthInterceptor
 import com.glamvibe.glamvibeadmin.data.api.AdministratorApi
+import com.glamvibe.glamvibeadmin.data.api.ClientsApi
 import com.glamvibe.glamvibeadmin.data.api.MastersApi
 import com.glamvibe.glamvibeadmin.data.api.PromotionsApi
 import com.glamvibe.glamvibeadmin.data.api.ServicesApi
@@ -24,6 +25,7 @@ val apiModule = module {
     single { provideMastersApi(get()) }
     single { provideAppointmentsApi(get()) }
     single { providePromotionsApi(get()) }
+    single { provideClientsApi(get()) }
 }
 
 private val contentType = "application/json".toMediaType()
@@ -46,7 +48,8 @@ private fun provideRetrofit(
         .addConverterFactory(json.asConverterFactory(contentType))
         .build()
 
-private fun provideAdministratorApi(retrofit: Retrofit): AdministratorApi = retrofit.create(AdministratorApi::class.java)
+private fun provideAdministratorApi(retrofit: Retrofit): AdministratorApi =
+    retrofit.create(AdministratorApi::class.java)
 
 private fun provideServicesApi(retrofit: Retrofit): ServicesApi =
     retrofit.create(ServicesApi::class.java)
@@ -59,3 +62,6 @@ private fun provideAppointmentsApi(retrofit: Retrofit): AppointmentsApi =
 
 private fun providePromotionsApi(retrofit: Retrofit): PromotionsApi =
     retrofit.create(PromotionsApi::class.java)
+
+private fun provideClientsApi(retrofit: Retrofit): ClientsApi =
+    retrofit.create(ClientsApi::class.java)

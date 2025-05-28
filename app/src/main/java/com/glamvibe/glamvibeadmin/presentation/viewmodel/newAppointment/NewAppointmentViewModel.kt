@@ -3,8 +3,10 @@ package com.glamvibe.glamvibeadmin.presentation.viewmodel.newAppointment
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.glamvibe.glamvibeadmin.data.model.request.NewAppointment
+import com.glamvibe.glamvibeadmin.data.model.response.toUser
 import com.glamvibe.glamvibeadmin.domain.model.toWeekDay
 import com.glamvibe.glamvibeadmin.domain.repository.appointments.AppointmentsRepository
+import com.glamvibe.glamvibeadmin.domain.repository.clients.ClientsRepository
 import com.glamvibe.glamvibeadmin.domain.repository.masters.MastersRepository
 import com.glamvibe.glamvibeadmin.domain.repository.services.ServicesRepository
 import com.glamvibe.glamvibeadmin.utils.Status
@@ -18,24 +20,32 @@ import kotlinx.datetime.LocalDate
 import kotlinx.datetime.LocalTime
 
 class NewAppointmentViewModel(
+    private val clientsRepository: ClientsRepository,
     private val appointmentsRepository: AppointmentsRepository,
     private val servicesRepository: ServicesRepository,
     private val mastersRepository: MastersRepository,
-    private val clientId: Int
 ) : ViewModel() {
     private var _state = MutableStateFlow(NewAppointmentUiState())
     val state = _state.asStateFlow()
 
     init {
-        loadServicesAndMastersInformation()
+        loadInformation()
     }
 
-    private fun loadServicesAndMastersInformation() {
+    private fun loadInformation() {
         _state.update { it.copy(status = Status.Loading) }
 
         viewModelScope.launch {
             try {
-                val services = servicesRepository.getServices(clientId)
+                val clients = clientsRepository.getClients().map {
+                    it.toUser()
+                }
+
+                val clientsNames = clients.map {
+                    if (it.patronymic != null) "${it.lastname} ${it.name} ${it.patronymic}" else "${it.lastname} ${it.name}"
+                }
+
+                val services = servicesRepository.getServices()
 
                 val mastersWithAppointments =
                     mastersRepository.getMastersWithCurrentAppointments()
@@ -46,6 +56,8 @@ class NewAppointmentViewModel(
 
                 _state.update { state ->
                     state.copy(
+                        clients = clients,
+                        clientsNames = clientsNames,
                         services = services,
                         masters = mastersWithAppointments,
                         mastersNames = mastersNames,
@@ -56,6 +68,31 @@ class NewAppointmentViewModel(
                 _state.update {
                     it.copy(status = Status.Error(e))
                 }
+            }
+        }
+    }
+
+    fun onClientSelected(clientName: String?) {
+        val client = state.value.clients.find { m ->
+            val fio =
+                if (m.patronymic != null) "${m.lastname} ${m.name} ${m.patronymic}" else "${m.lastname} ${m.name}"
+            fio == clientName
+        }
+
+        if (client != null) {
+            val lastSelectedClient =
+                if (client.patronymic != null) "${client.lastname} ${client.name} ${client.patronymic}" else "${client.lastname} ${client.name}"
+
+            _state.update {
+                it.copy(
+                    lastSelectedClient = lastSelectedClient,
+                )
+            }
+        } else {
+            _state.update {
+                it.copy(
+                    lastSelectedClient = null,
+                )
             }
         }
     }
@@ -156,6 +193,12 @@ class NewAppointmentViewModel(
     ) {
         _state.update { it.copy(status = Status.Loading) }
 
+        val client = state.value.clients.find { client ->
+            val fio =
+                if (client.patronymic != null) "${client.lastname} ${client.name} ${client.patronymic}" else "${client.lastname} ${client.name}"
+            fio == state.value.lastSelectedClient
+        }
+
         val service = state.value.services.find { it.name == state.value.lastSelectedService }
 
         val master = state.value.masters.find { m ->
@@ -164,8 +207,8 @@ class NewAppointmentViewModel(
             fio == state.value.lastSelectedMaster
         }
 
-        if (service == null || master == null) {
-            val error = "Для записи выберите услугу и мастера"
+        if (service == null || master == null || client == null) {
+            val error = "Для записи выберите клиента, услугу и мастера"
             _state.update {
                 it.copy(status = Status.Error(Throwable(message = error)))
             }
@@ -175,15 +218,15 @@ class NewAppointmentViewModel(
         viewModelScope.launch {
             try {
                 val newAppointment = NewAppointment(
-                    clientId = clientId,
-                    serviceId = service.id ,
+                    clientId = client.id,
+                    serviceId = service.id,
                     masterId = master.id,
                     date = date,
                     time = time,
                     weekDay = weekDay.toWeekDay()
                 )
 
-                val appointment = appointmentsRepository.makeAppointment(clientId, newAppointment)
+                val appointment = appointmentsRepository.makeAppointment(newAppointment)
 
                 _state.update {
                     it.copy(

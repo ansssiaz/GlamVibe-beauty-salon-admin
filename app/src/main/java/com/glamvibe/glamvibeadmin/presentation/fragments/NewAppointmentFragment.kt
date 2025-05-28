@@ -8,7 +8,6 @@ import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import androidx.core.content.ContextCompat
-import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.flowWithLifecycle
@@ -16,7 +15,6 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.glamvibe.glamvibeadmin.R
 import com.glamvibe.glamvibeadmin.databinding.FragmentNewAppointmentBinding
-import com.glamvibe.glamvibeadmin.presentation.viewmodel.administrator.AdministratorViewModel
 import com.glamvibe.glamvibeadmin.presentation.viewmodel.newAppointment.NewAppointmentViewModel
 import com.glamvibe.glamvibeadmin.presentation.viewmodel.toolbar.ToolbarViewModel
 import com.glamvibe.glamvibeadmin.utils.Status
@@ -25,20 +23,16 @@ import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import kotlinx.datetime.LocalDate
 import kotlinx.datetime.LocalTime
-import org.koin.androidx.viewmodel.ext.android.activityViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
-import org.koin.core.parameter.parametersOf
 
 class NewAppointmentFragment : Fragment() {
-    companion object {
-        const val APPOINTMENT_CREATED_RESULT = "APPOINTMENT_CREATED_RESULT"
-    }
-
     private val toolbarViewModel: ToolbarViewModel by activityViewModels<ToolbarViewModel>()
-    private val administratorViewModel: AdministratorViewModel by activityViewModel<AdministratorViewModel>()
+    private val newAppointmentViewModel by viewModel<NewAppointmentViewModel>()
     private lateinit var binding: FragmentNewAppointmentBinding
+    private lateinit var clientsAdapter: ArrayAdapter<String>
     private lateinit var servicesAdapter: ArrayAdapter<String>
     private lateinit var mastersAdapter: ArrayAdapter<String>
+    private var currentClients: List<String> = emptyList()
     private var currentServices: List<String> = emptyList()
     private var currentMasters: List<String> = emptyList()
     override fun onCreateView(
@@ -49,16 +43,35 @@ class NewAppointmentFragment : Fragment() {
         binding = FragmentNewAppointmentBinding.inflate(inflater)
         toolbarViewModel.setTitle(getString(R.string.new_appointment_title))
 
-        val clientId = administratorViewModel.state.value.administrator?.id
-
-        val newAppointmentViewModel by viewModel<NewAppointmentViewModel> {
-            parametersOf(
-                clientId
-            )
-        }
-
         binding.makeAppointmentButton.isEnabled = false
         binding.makeAppointmentButton.alpha = 0.5f
+
+        clientsAdapter = ArrayAdapter(
+            requireContext(),
+            R.layout.spinner_dropdown_item,
+            mutableListOf<String>()
+        ).apply {
+            setDropDownViewResource(R.layout.spinner_dropdown_item)
+        }
+
+        binding.clientSpinner.adapter = clientsAdapter
+
+        binding.clientSpinner.onItemSelectedListener =
+            object : AdapterView.OnItemSelectedListener {
+                override fun onItemSelected(
+                    parent: AdapterView<*>?,
+                    view: View?,
+                    position: Int,
+                    id: Long
+                ) {
+                    val selected = parent?.getItemAtPosition(position) as? String
+                    newAppointmentViewModel.onClientSelected(selected)
+                }
+
+                override fun onNothingSelected(parent: AdapterView<*>?) {
+                    newAppointmentViewModel.onClientSelected(null)
+                }
+            }
 
         servicesAdapter = ArrayAdapter(
             requireContext(),
@@ -153,6 +166,21 @@ class NewAppointmentFragment : Fragment() {
         newAppointmentViewModel.state
             .flowWithLifecycle(viewLifecycleOwner.lifecycle)
             .onEach { state ->
+                val newClients = listOf("Выберите клиента") + state.clientsNames
+                currentClients = newClients
+
+                clientsAdapter.clear()
+                clientsAdapter.addAll(newClients)
+                clientsAdapter.notifyDataSetChanged()
+
+                val clientsAdapterPosition = state.lastSelectedService?.let { client ->
+                    newClients.indexOf(client)
+                } ?: 0
+
+                if (clientsAdapterPosition >= 0) {
+                    binding.serviceSpinner.setSelection(clientsAdapterPosition)
+                }
+
                 val newServices = listOf("Выберите услугу") + state.services.map { it.name }
                 currentServices = newServices
 
@@ -183,7 +211,7 @@ class NewAppointmentFragment : Fragment() {
                 } ?: 0
 
                 if (masterAdapterPosition >= 0) {
-                    binding.masterSpinner.setSelection(serviceAdapterPosition)
+                    binding.masterSpinner.setSelection(masterAdapterPosition)
                 }
 
                 binding.timeChipGroup.removeAllViews()
@@ -230,11 +258,7 @@ class NewAppointmentFragment : Fragment() {
                 }
 
                 if (state.appointment != null) {
-                    requireActivity().supportFragmentManager.setFragmentResult(
-                        APPOINTMENT_CREATED_RESULT,
-                        bundleOf()
-                    )
-                    findNavController().navigate(R.id.action_newAppointmentFragment_to_appointmentsFragment)
+                    findNavController().navigateUp()
                 }
             }
             .launchIn(viewLifecycleOwner.lifecycleScope)

@@ -5,12 +5,9 @@ import retrofit2.http.GET
 import retrofit2.http.Path
 
 interface ServicesApi {
-    @GET("services/clients/{id}")
-    suspend fun getServices(@Path("id") clientId: Int): List<Service>
+    @GET("services")
+    suspend fun getServices(): List<Service>
 
-    @GET("services/{serviceId}/clients/{clientId}")
-    suspend fun getService(
-        @Path("serviceId") serviceId: Int,
-        @Path("clientId") clientId: Int
-    ): Service
+    @GET("services/{id}")
+    suspend fun getService(@Path("id") serviceId: Int): Service
 }

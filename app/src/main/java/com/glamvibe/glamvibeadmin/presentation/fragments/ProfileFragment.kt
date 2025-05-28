@@ -51,13 +51,6 @@ class ProfileFragment : Fragment() {
             }
             .launchIn(viewLifecycleOwner.lifecycleScope)
 
-        binding.appointmentsItem.setOnClickListener {
-            requireParentFragment().requireParentFragment().findNavController()
-                .navigate(
-                    R.id.action_bottomMenuFragment_to_appointmentsFragment
-                )
-        }
-
         binding.profileDataItem.setOnClickListener {
             requireParentFragment().requireParentFragment().findNavController()
                 .navigate(

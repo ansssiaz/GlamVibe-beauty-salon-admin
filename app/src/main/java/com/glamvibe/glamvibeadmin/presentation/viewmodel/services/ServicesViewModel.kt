@@ -14,12 +14,16 @@ class ServicesViewModel(
     private var _state = MutableStateFlow(ServicesUiState())
     val state = _state.asStateFlow()
 
-    fun getServices(clientId: Int) {
+    init {
+        getServices()
+    }
+
+    private fun getServices() {
         _state.update { it.copy(status = Status.Loading) }
 
         viewModelScope.launch {
             try {
-                val services = servicesRepository.getServices(clientId)
+                val services = servicesRepository.getServices()
                 val categories = services.map { it.category }.distinct()
 
                 val filtered = _state.value.lastSelectedCategory?.let { category ->
