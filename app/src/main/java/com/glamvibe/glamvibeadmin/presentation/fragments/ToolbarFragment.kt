@@ -31,10 +31,13 @@ class ToolbarFragment : Fragment() {
     ): View {
         val binding = FragmentToolbarBinding.inflate(inflater, container, false)
 
-        val navigationArrow = ContextCompat.getDrawable(requireContext(), R.drawable.baseline_arrow_back_24)
+        val navigationArrow =
+            ContextCompat.getDrawable(requireContext(), R.drawable.baseline_arrow_back_24)
 
         val navController =
             requireNotNull(childFragmentManager.findFragmentById(R.id.container)).findNavController()
+
+        val addItem = binding.toolbar.menu.findItem(R.id.add)
 
         binding.toolbar.setupWithNavController(navController)
 
@@ -54,11 +57,22 @@ class ToolbarFragment : Fragment() {
 
         val toolbarViewModel by activityViewModels<ToolbarViewModel>()
 
+        toolbarViewModel.showAdd
+            .onEach {
+                addItem.isVisible = it
+            }
+            .launchIn(viewLifecycleOwner.lifecycleScope)
+
         toolbarViewModel.title.onEach { title ->
             binding.toolbar.title = title
         }.launchIn(viewLifecycleOwner.lifecycleScope)
 
         binding.toolbar.title = getString(R.string.app_name)
+
+        addItem.setOnMenuItemClickListener {
+            toolbarViewModel.addClicked(true)
+            true
+        }
 
         return binding.root
     }

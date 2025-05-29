@@ -17,6 +17,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:title=""
+        app:menu="@menu/add_menu"
         app:titleTextAppearance="@style/ToolbarTitleText" />
 
     <androidx.fragment.app.FragmentContainerView

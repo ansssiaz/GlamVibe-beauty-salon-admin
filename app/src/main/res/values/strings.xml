@@ -110,4 +110,12 @@
     <string name="master_content_description">Мастер</string>
     <string name="client_content_description">Клиент</string>
     <string name="make_appointment_client_title">1. Client</string>
+    <string name="hint_service_name">Service name</string>
+    <string name="hint_service_duration">Duration</string>
+    <string name="hint_service_price">Price</string>
+    <string name="hint_service_description">Description</string>
+    <string name="save_button_text">Save</string>
+    <string name="new_service_title">New service</string>
+    <string name="edit_service_title">Edit service</string>
+    <string name="add">Add</string>
 </resources>

@@ -13,5 +13,4 @@ data class Service(
     val price: Int = 0,
     val priceWithPromotion: Int? = null,
     val discountPercentage: Int? = null,
-    val isFavourite: Boolean = false,
 )

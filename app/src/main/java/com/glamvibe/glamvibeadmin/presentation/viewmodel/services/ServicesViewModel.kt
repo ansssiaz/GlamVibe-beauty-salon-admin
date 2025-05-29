@@ -18,7 +18,7 @@ class ServicesViewModel(
         getServices()
     }
 
-    private fun getServices() {
+    fun getServices() {
         _state.update { it.copy(status = Status.Loading) }
 
         viewModelScope.launch {

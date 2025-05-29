@@ -109,4 +109,12 @@
     <string name="master_content_description">Мастер</string>
     <string name="client_content_description">Клиент</string>
     <string name="make_appointment_client_title">1. Клиент</string>
+    <string name="hint_service_name">Название услуги <font color="#FF0000">*</font></string>
+    <string name="hint_service_duration">Продолжительность (мин) <font color="#FF0000">*</font></string>
+    <string name="hint_service_price">Цена <font color="#FF0000">*</font></string>
+    <string name="hint_service_description">Описание <font color="#FF0000">*</font></string>
+    <string name="save_button_text">Сохранить</string>
+    <string name="new_service_title">Новая услуга</string>
+    <string name="edit_service_title">Редактировать услугу</string>
+    <string name="add">Add</string>
 </resources>
