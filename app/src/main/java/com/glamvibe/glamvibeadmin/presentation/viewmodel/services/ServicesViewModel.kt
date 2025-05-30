@@ -18,7 +18,7 @@ class ServicesViewModel(
         getServices()
     }
 
-    private fun getServices() {
+    fun getServices() {
         _state.update { it.copy(status = Status.Loading) }
 
         viewModelScope.launch {
@@ -59,6 +59,36 @@ class ServicesViewModel(
                 filteredServices = filtered,
                 lastSelectedCategory = category
             )
+        }
+    }
+
+    fun deleteService(id: Int){
+        _state.update { it.copy(status = Status.Loading) }
+        viewModelScope.launch {
+            try {
+                servicesRepository.deleteService(id)
+                val services = servicesRepository.getServices()
+                val categories = services.map { it.category }.distinct()
+
+                val filtered = _state.value.lastSelectedCategory?.let { category ->
+                    if (category == "Все категории") services
+                    else services.filter { it.category == category }
+                } ?: services
+
+                _state.update {
+                    it.copy(
+                        services = services,
+                        categories = categories,
+                        filteredServices = filtered,
+                        lastSelectedCategory = null,
+                        status = Status.Idle
+                    )
+                }
+            } catch (e: Exception) {
+                _state.update {
+                    it.copy(status = Status.Error(e))
+                }
+            }
         }
     }
 }

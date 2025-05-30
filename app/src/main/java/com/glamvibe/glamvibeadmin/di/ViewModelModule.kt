@@ -6,6 +6,7 @@ import com.glamvibe.glamvibeadmin.presentation.viewmodel.appointments.Appointmen
 import com.glamvibe.glamvibeadmin.presentation.viewmodel.masters.MastersViewModel
 import com.glamvibe.glamvibeadmin.presentation.viewmodel.newAppointment.NewAppointmentViewModel
 import com.glamvibe.glamvibeadmin.presentation.viewmodel.newAdministrator.NewAdministratorViewModel
+import com.glamvibe.glamvibeadmin.presentation.viewmodel.newService.NewServiceViewModel
 import com.glamvibe.glamvibeadmin.presentation.viewmodel.promotion.PromotionViewModel
 import com.glamvibe.glamvibeadmin.presentation.viewmodel.promotions.PromotionsViewModel
 import com.glamvibe.glamvibeadmin.presentation.viewmodel.service.ServiceViewModel
@@ -52,5 +53,9 @@ val viewModelModule = module {
 
     viewModel {
         AppointmentsViewModel(get())
+    }
+
+    viewModel {
+        NewServiceViewModel(get())
     }
 }

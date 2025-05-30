@@ -14,36 +14,23 @@
             android:id="@+id/action_bottomMenuFragment_to_newAppointmentFragment"
             app:destination="@id/newAppointmentFragment" />
         <action
-            android:id="@+id/action_bottomMenuFragment_to_promotionFragment"
-            app:destination="@id/promotionFragment" />
-        <action
             android:id="@+id/action_bottomMenuFragment_to_profileDataFragment"
             app:destination="@id/profileDataFragment" />
         <action
             android:id="@+id/action_bottomMenuFragment_to_authorizationFragment"
             app:destination="@id/authorizationFragment" />
         <action
-            android:id="@+id/action_bottomMenuFragment_to_appointmentsFragment"
-            app:destination="@id/appointmentsFragment" />
-        <action
             android:id="@+id/action_bottomMenuFragment_to_servicesCatalogFragment"
             app:destination="@id/servicesCatalogFragment" />
         <action
             android:id="@+id/action_bottomMenuFragment_to_mastersCatalogFragment"
             app:destination="@id/mastersCatalogFragment" />
-        <action
-            android:id="@+id/action_bottomMenuFragment_to_serviceInformationFragment"
-            app:destination="@id/serviceInformationFragment" />
     </fragment>
     <fragment
         android:id="@+id/newAppointmentFragment"
         android:name="com.glamvibe.glamvibeadmin.presentation.fragments.NewAppointmentFragment"
         android:label="NewAppointmentFragment"
-        tools:layout="@layout/fragment_new_appointment">
-        <action
-            android:id="@+id/action_newAppointmentFragment_to_appointmentsFragment"
-            app:destination="@id/appointmentsFragment" />
-    </fragment>
+        tools:layout="@layout/fragment_new_appointment"/>
     <fragment
         android:id="@+id/promotionFragment"
         android:name="com.glamvibe.glamvibeadmin.presentation.fragments.PromotionFragment"
@@ -90,10 +77,18 @@
         <action
             android:id="@+id/action_servicesCatalogFragment_to_serviceInformationFragment"
             app:destination="@id/serviceInformationFragment" />
+        <action
+            android:id="@+id/action_servicesCatalogFragment_to_newServiceFragment"
+            app:destination="@id/newServiceFragment" />
     </fragment>
     <fragment
         android:id="@+id/mastersCatalogFragment"
         android:name="com.glamvibe.glamvibeadmin.presentation.fragments.MastersCatalogFragment"
         android:label="MastersCatalogFragment"
         tools:layout="@layout/fragment_catalog_masters"/>
+    <fragment
+        android:id="@+id/newServiceFragment"
+        android:name="com.glamvibe.glamvibeadmin.presentation.fragments.NewServiceFragment"
+        android:label="NewServiceFragment"
+        tools:layout="@layout/fragment_new_service"/>
 </navigation>

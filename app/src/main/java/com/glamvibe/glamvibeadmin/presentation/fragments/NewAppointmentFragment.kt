@@ -35,6 +35,7 @@ class NewAppointmentFragment : Fragment() {
     private var currentClients: List<String> = emptyList()
     private var currentServices: List<String> = emptyList()
     private var currentMasters: List<String> = emptyList()
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,

@@ -19,6 +19,7 @@ import com.glamvibe.glamvibeadmin.domain.model.Service
 import com.glamvibe.glamvibeadmin.presentation.adapter.services.ServicesAdapter
 import com.glamvibe.glamvibeadmin.presentation.viewmodel.services.ServicesViewModel
 import com.glamvibe.glamvibeadmin.presentation.viewmodel.toolbar.ToolbarViewModel
+import kotlinx.coroutines.flow.filter
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -30,6 +31,11 @@ class ServicesCatalogFragment : Fragment() {
     private lateinit var categoriesAdapter: ArrayAdapter<String>
     private var currentCategories: List<String> = emptyList()
 
+    override fun onStop() {
+        super.onStop()
+        toolbarViewModel.setAddVisibility(false)
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -37,7 +43,26 @@ class ServicesCatalogFragment : Fragment() {
     ): View {
         binding = FragmentCatalogServicesBinding.inflate(inflater)
 
+        toolbarViewModel.setAddVisibility(true)
+
         toolbarViewModel.setTitle(getString(R.string.catalog_services_title))
+
+        toolbarViewModel.addClicked
+            .filter { it }
+            .onEach {
+                findNavController().navigate(
+                    R.id.action_servicesCatalogFragment_to_newServiceFragment
+                )
+                toolbarViewModel.addClicked(false)
+            }
+            .launchIn(viewLifecycleOwner.lifecycleScope)
+
+        requireActivity().supportFragmentManager.setFragmentResultListener(
+            NewServiceFragment.SERVICE_CREATED_RESULT,
+            viewLifecycleOwner
+        ) { _, _ ->
+            servicesViewModel.getServices()
+        }
 
         categoriesAdapter = ArrayAdapter(
             requireContext(),
@@ -67,8 +92,15 @@ class ServicesCatalogFragment : Fragment() {
 
         val servicesAdapter = ServicesAdapter(
             object : ServicesAdapter.ServicesListener {
-                override fun onFavouriteClicked(service: Service) {
+                override fun onEditClicked(service: Service) {
+                    findNavController().navigate(
+                        R.id.action_servicesCatalogFragment_to_newServiceFragment,
+                        bundleOf(ServiceInformationFragment.ARG_ID to service.id)
+                    )
+                }
 
+                override fun onDeleteClicked(service: Service) {
+                    servicesViewModel.deleteService(service.id)
                 }
 
                 override fun onServiceImageClicked(service: Service) {
