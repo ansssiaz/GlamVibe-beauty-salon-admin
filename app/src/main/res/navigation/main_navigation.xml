@@ -85,10 +85,19 @@
         android:id="@+id/mastersCatalogFragment"
         android:name="com.glamvibe.glamvibeadmin.presentation.fragments.MastersCatalogFragment"
         android:label="MastersCatalogFragment"
-        tools:layout="@layout/fragment_catalog_masters"/>
+        tools:layout="@layout/fragment_catalog_masters">
+        <action
+            android:id="@+id/action_mastersCatalogFragment_to_masterInformationFragment"
+            app:destination="@id/masterInformationFragment" />
+    </fragment>
     <fragment
         android:id="@+id/newServiceFragment"
         android:name="com.glamvibe.glamvibeadmin.presentation.fragments.NewServiceFragment"
         android:label="NewServiceFragment"
         tools:layout="@layout/fragment_new_service"/>
+    <fragment
+        android:id="@+id/masterInformationFragment"
+        android:name="com.glamvibe.glamvibeadmin.presentation.fragments.MasterInformationFragment"
+        android:label="MasterInformationFragment"
+        tools:layout="@layout/fragment_master_information"/>
 </navigation>

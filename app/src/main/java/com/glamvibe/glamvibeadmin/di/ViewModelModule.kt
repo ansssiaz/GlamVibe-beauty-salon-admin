@@ -3,6 +3,7 @@ package com.glamvibe.glamvibeadmin.di
 import com.glamvibe.glamvibeadmin.presentation.viewmodel.clientAppointments.ClientAppointmentsViewModel
 import com.glamvibe.glamvibeadmin.presentation.viewmodel.administrator.AdministratorViewModel
 import com.glamvibe.glamvibeadmin.presentation.viewmodel.appointments.AppointmentsViewModel
+import com.glamvibe.glamvibeadmin.presentation.viewmodel.master.MasterViewModel
 import com.glamvibe.glamvibeadmin.presentation.viewmodel.masters.MastersViewModel
 import com.glamvibe.glamvibeadmin.presentation.viewmodel.newAppointment.NewAppointmentViewModel
 import com.glamvibe.glamvibeadmin.presentation.viewmodel.newAdministrator.NewAdministratorViewModel
@@ -57,5 +58,9 @@ val viewModelModule = module {
 
     viewModel {
         NewServiceViewModel(get())
+    }
+
+    viewModel { (masterId: Int) ->
+        MasterViewModel(get(), masterId)
     }
 }

@@ -119,4 +119,8 @@
     <string name="add">Добавить</string>
     <string name="edit">Редактировать</string>
     <string name="delete">Удалить</string>
+    <string name="birth_date_text">Дата рождения:</string>
+    <string name="phone_text">Телефон:</string>
+    <string name="date_of_employment_text">Дата приема на работу:</string>
+    <string name="master_schedule_text">График работы</string>
 </resources>

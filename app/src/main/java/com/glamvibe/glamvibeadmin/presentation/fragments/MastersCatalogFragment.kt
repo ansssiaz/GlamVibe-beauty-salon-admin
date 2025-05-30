@@ -6,13 +6,16 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
+import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.flowWithLifecycle
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.glamvibe.glamvibeadmin.R
 import com.glamvibe.glamvibeadmin.databinding.FragmentCatalogMastersBinding
+import com.glamvibe.glamvibeadmin.domain.model.Master
 import com.glamvibe.glamvibeadmin.presentation.adapter.masters.MastersAdapter
 import com.glamvibe.glamvibeadmin.presentation.viewmodel.masters.MastersViewModel
 import com.glamvibe.glamvibeadmin.presentation.viewmodel.toolbar.ToolbarViewModel
@@ -62,7 +65,24 @@ class MastersCatalogFragment : Fragment() {
             }
         }
 
-        val mastersAdapter = MastersAdapter()
+        val mastersAdapter = MastersAdapter(
+            object : MastersAdapter.MastersListener {
+                override fun onEditClicked(master: Master) {
+                    TODO("Not yet implemented")
+                }
+
+                override fun onDeleteClicked(master: Master) {
+                    TODO("Not yet implemented")
+                }
+
+                override fun onMasterPhotoClicked(master: Master) {
+                    findNavController().navigate(
+                        R.id.action_mastersCatalogFragment_to_masterInformationFragment,
+                        bundleOf(MasterInformationFragment.ARG_ID to master.id)
+                    )
+                }
+            }
+        )
 
         binding.listOfMasters.isNestedScrollingEnabled = false
         binding.listOfMasters.layoutManager = GridLayoutManager(requireContext(), 2)
