@@ -100,7 +100,7 @@ class ServicesCatalogFragment : Fragment() {
                 }
 
                 override fun onDeleteClicked(service: Service) {
-                    TODO("Not yet implemented")
+                    servicesViewModel.deleteService(service.id)
                 }
 
                 override fun onServiceImageClicked(service: Service) {

@@ -26,4 +26,6 @@ interface ServicesRepository {
         imageBytes: ByteArray?,
         imageExtension: String?
     ): Service
+
+    suspend fun deleteService(id: Int)
 }

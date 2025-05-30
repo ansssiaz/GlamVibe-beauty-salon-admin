@@ -92,4 +92,6 @@ class ServicesRepositoryImpl(private val api: ServicesApi) : ServicesRepository 
             )
         }
     }
+
+    override suspend fun deleteService(id: Int) = api.deleteService(id)
 }
