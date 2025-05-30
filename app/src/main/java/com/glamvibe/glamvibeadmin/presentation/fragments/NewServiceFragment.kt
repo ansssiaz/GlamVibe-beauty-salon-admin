@@ -1,5 +1,6 @@
 package com.glamvibe.glamvibeadmin.presentation.fragments
 
+import android.annotation.SuppressLint
 import android.net.Uri
 import android.os.Bundle
 import android.text.Editable
@@ -40,8 +41,10 @@ class NewServiceFragment : Fragment() {
     private var currentCategories: List<String> = emptyList()
     private var selectedImageUri: Uri? = null
     private val toolbarViewModel: ToolbarViewModel by activityViewModels<ToolbarViewModel>()
+    private var id: Int = 0
     private val newServiceViewModel: NewServiceViewModel by viewModel<NewServiceViewModel>()
 
+    @SuppressLint("SetTextI18n")
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -49,7 +52,7 @@ class NewServiceFragment : Fragment() {
     ): View {
         binding = FragmentNewServiceBinding.inflate(inflater)
 
-        val id = arguments?.getInt(ARG_ID) ?: 0
+        id = arguments?.getInt(ARG_ID) ?: 0
 
         val title =
             if (id != 0) R.string.edit_service_title else R.string.new_service_title
@@ -124,16 +127,28 @@ class NewServiceFragment : Fragment() {
                 requireContext().contentResolver.getType(uri)
             }
 
-            val imageExtension = when (mimeType) {
-                "image/jpeg" -> "jpg"
-                "image/png" -> "png"
-                "image/gif" -> "gif"
-                "image/webp" -> "webp"
-                else -> "jpg"
+            val imageExtension = if (imageBytes != null) {
+                when (mimeType) {
+                    "image/jpeg" -> "jpg"
+                    "image/png" -> "png"
+                    "image/gif" -> "gif"
+                    "image/webp" -> "webp"
+                    else -> "jpg"
+                }
+            } else {
+                null
             }
 
-            if (imageBytes != null) {
-                newServiceViewModel.addService(
+            if (id == 0) {
+                if (imageBytes != null && imageExtension != null) {
+                    newServiceViewModel.addService(
+                        name, category, description, duration, price,
+                        imageBytes, imageExtension
+                    )
+                }
+            } else {
+                newServiceViewModel.editService(
+                    id,
                     name, category, description, duration, price,
                     imageBytes, imageExtension
                 )
@@ -182,8 +197,8 @@ class NewServiceFragment : Fragment() {
                         binding.categorySpinner.setSelection(position)
                     }
 
-                    binding.servicePriceTextEdit.setText(state.serviceToEdit.price)
-                    binding.serviceDurationTextEdit.setText(state.serviceToEdit.duration)
+                    binding.servicePriceTextEdit.setText(state.serviceToEdit.price.toString())
+                    binding.serviceDurationTextEdit.setText(state.serviceToEdit.duration.toString())
                     binding.serviceDescriptionTextEdit.setText(state.serviceToEdit.description)
                 }
 
@@ -229,7 +244,7 @@ class NewServiceFragment : Fragment() {
         val duration = binding.serviceDurationTextEdit.text.toString()
         val description = binding.serviceDescriptionTextEdit.text.toString()
         val categorySelected = binding.categorySpinner.selectedItemPosition != 0
-        val imageSelected = selectedImageUri != null
+        val imageSelected = (selectedImageUri != null) || id != 0
 
         val isEnabled = name.isNotBlank() &&
                 price.isNotBlank() &&

@@ -92,8 +92,15 @@ class ServicesCatalogFragment : Fragment() {
 
         val servicesAdapter = ServicesAdapter(
             object : ServicesAdapter.ServicesListener {
-                override fun onFavouriteClicked(service: Service) {
+                override fun onEditClicked(service: Service) {
+                    findNavController().navigate(
+                        R.id.action_servicesCatalogFragment_to_newServiceFragment,
+                        bundleOf(ServiceInformationFragment.ARG_ID to service.id)
+                    )
+                }
 
+                override fun onDeleteClicked(service: Service) {
+                    TODO("Not yet implemented")
                 }
 
                 override fun onServiceImageClicked(service: Service) {

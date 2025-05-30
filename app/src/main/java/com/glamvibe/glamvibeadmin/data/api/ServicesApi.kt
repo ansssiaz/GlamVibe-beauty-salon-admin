@@ -6,6 +6,7 @@ import okhttp3.RequestBody
 import retrofit2.http.GET
 import retrofit2.http.Multipart
 import retrofit2.http.POST
+import retrofit2.http.PUT
 import retrofit2.http.Part
 import retrofit2.http.Path
 
@@ -28,5 +29,17 @@ interface ServicesApi {
         @Part("duration") duration: RequestBody,
         @Part("price") price: RequestBody,
         @Part image: MultipartBody.Part
+    ): Service
+
+    @Multipart
+    @PUT("services/{id}")
+    suspend fun editService(
+        @Path("id") serviceId: Int,
+        @Part("name") name: RequestBody,
+        @Part("category") category: RequestBody,
+        @Part("description") description: RequestBody,
+        @Part("duration") duration: RequestBody,
+        @Part("price") price: RequestBody,
+        @Part image: MultipartBody.Part?
     ): Service
 }

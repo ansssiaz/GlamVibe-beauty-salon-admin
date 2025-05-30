@@ -118,4 +118,6 @@
     <string name="new_service_title">New service</string>
     <string name="edit_service_title">Edit service</string>
     <string name="add">Add</string>
+    <string name="edit">Edit</string>
+    <string name="delete">Delete</string>
 </resources>

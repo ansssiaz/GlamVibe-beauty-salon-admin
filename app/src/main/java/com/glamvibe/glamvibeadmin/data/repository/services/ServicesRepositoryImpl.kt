@@ -46,4 +46,50 @@ class ServicesRepositoryImpl(private val api: ServicesApi) : ServicesRepository 
             imagePart
         )
     }
+
+    override suspend fun editService(
+        id: Int,
+        name: String,
+        category: String,
+        description: String,
+        duration: Int,
+        price: Int,
+        imageBytes: ByteArray?,
+        imageExtension: String?
+    ): Service {
+        val namePart = name.toRequestBody("text/plain".toMediaType())
+        val categoryPart = category.toRequestBody("text/plain".toMediaType())
+        val descriptionPart = description.toRequestBody("text/plain".toMediaType())
+        val durationPart = duration.toString().toRequestBody("text/plain".toMediaType())
+        val pricePart = price.toString().toRequestBody("text/plain".toMediaType())
+
+        if (imageBytes != null && imageExtension != null) {
+            val fileRequestBody =
+                imageBytes.toRequestBody("image/*".toMediaType(), 0, imageBytes.size)
+            val imagePart = MultipartBody.Part.createFormData(
+                "image",
+                "${UUID.randomUUID()}.${imageExtension}",
+                fileRequestBody
+            )
+            return api.editService(
+                id,
+                namePart,
+                categoryPart,
+                descriptionPart,
+                durationPart,
+                pricePart,
+                imagePart
+            )
+        } else {
+            return api.editService(
+                id,
+                namePart,
+                categoryPart,
+                descriptionPart,
+                durationPart,
+                pricePart,
+                null
+            )
+        }
+    }
 }

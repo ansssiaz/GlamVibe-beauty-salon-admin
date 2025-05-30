@@ -1,9 +1,7 @@
 package com.glamvibe.glamvibeadmin.presentation.viewmodel.newService
 
-import android.net.Uri
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.glamvibe.glamvibeadmin.domain.model.Service
 import com.glamvibe.glamvibeadmin.domain.repository.services.ServicesRepository
 import com.glamvibe.glamvibeadmin.utils.Status
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -87,18 +85,41 @@ class NewServiceViewModel(
         }
     }
 
-    /*fun editService() {
+    fun editService(
+        id: Int,
+        name: String,
+        category: String,
+        description: String,
+        duration: String,
+        price: String,
+        imageBytes: ByteArray?,
+        imageExtension: String?
+    ) {
         _state.update { it.copy(status = Status.Loading) }
 
         viewModelScope.launch {
             try {
-                val newService = servicesRepository.editService()
-                _state.update { it.copy(newService = newService, status = Status.Idle) }
+                val newService = servicesRepository.editService(
+                    id,
+                    name,
+                    category,
+                    description,
+                    duration.toInt(),
+                    price.toInt(),
+                    imageBytes,
+                    imageExtension
+                )
+                _state.update {
+                    it.copy(
+                        newService = newService,
+                        status = Status.Idle
+                    )
+                }
             } catch (e: Exception) {
                 _state.update {
                     it.copy(status = Status.Error(e))
                 }
             }
         }
-    }*/
+    }
 }

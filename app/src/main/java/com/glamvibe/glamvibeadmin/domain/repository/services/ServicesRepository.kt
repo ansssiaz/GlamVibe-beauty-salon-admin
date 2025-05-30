@@ -15,4 +15,15 @@ interface ServicesRepository {
         imageBytes: ByteArray,
         imageExtension: String
     ): Service
+
+    suspend fun editService(
+        id: Int,
+        name: String,
+        category: String,
+        description: String,
+        duration: Int,
+        price: Int,
+        imageBytes: ByteArray?,
+        imageExtension: String?
+    ): Service
 }
