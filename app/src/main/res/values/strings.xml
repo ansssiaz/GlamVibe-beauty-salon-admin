@@ -137,4 +137,6 @@
     <string name="hh_mm">HH:mm</string>
     <string name="edit_master_title">Редактировать мастера</string>
     <string name="new_master_title">Добавить мастера</string>
+    <string name="email_text">Email</string>
+    <string name="hint_search_clients">Введите ФИО клиента</string>
 </resources>
