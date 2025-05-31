@@ -216,6 +216,11 @@ class NewMasterFragment : Fragment() {
                             setTextColor(ContextCompat.getColor(requireContext(), R.color.brown))
                             textSize = 16f
                         }
+
+                        checkBox.setOnCheckedChangeListener { _, _ ->
+                            checkSaveButtonState()
+                        }
+
                         binding.categoriesCheckboxesContainer.addView(checkBox)
                     }
                 }
