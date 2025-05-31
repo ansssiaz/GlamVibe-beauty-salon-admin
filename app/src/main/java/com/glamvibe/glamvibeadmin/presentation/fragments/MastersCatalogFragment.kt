@@ -100,7 +100,7 @@ class MastersCatalogFragment : Fragment() {
                 }
 
                 override fun onDeleteClicked(master: Master) {
-                    TODO("Not yet implemented")
+                    mastersViewModel.deleteMaster(master.id)
                 }
 
                 override fun onMasterPhotoClicked(master: Master) {

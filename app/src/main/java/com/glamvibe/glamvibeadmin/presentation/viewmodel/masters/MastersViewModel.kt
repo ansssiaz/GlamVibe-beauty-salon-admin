@@ -30,7 +30,7 @@ class MastersViewModel(
 
                 val filtered = _state.value.lastSelectedCategory?.let { category ->
                     if (category == "Все категории") masters
-                    else masters.filter { it.categories == categories }
+                    else masters.filter { it.categories.contains(category) }
                 } ?: masters
 
                 _state.update {
@@ -61,6 +61,35 @@ class MastersViewModel(
                 filteredMasters = filtered,
                 lastSelectedCategory = category
             )
+        }
+    }
+
+    fun deleteMaster(id: Int) {
+        _state.update { it.copy(status = Status.Loading) }
+        viewModelScope.launch {
+            try {
+                mastersRepository.deleteMaster(id)
+                val masters = mastersRepository.getMasters()
+                val categories = masters.flatMap { it.categories }.distinct()
+
+                val filtered = _state.value.lastSelectedCategory?.let { category ->
+                    if (category == "Все категории") masters
+                    else masters.filter { it.categories.contains(category) }
+                } ?: masters
+
+                _state.update {
+                    it.copy(
+                        masters = masters,
+                        categories = categories,
+                        filteredMasters = filtered,
+                        status = Status.Idle
+                    )
+                }
+            } catch (e: Exception) {
+                _state.update {
+                    it.copy(status = Status.Error(e))
+                }
+            }
         }
     }
 }
