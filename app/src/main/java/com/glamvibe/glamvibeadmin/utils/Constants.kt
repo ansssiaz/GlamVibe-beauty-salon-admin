@@ -19,3 +19,8 @@ class Constants {
         const val CANCELLATION_BY_THE_ADMINISTRATOR = "Отмена администратором"
     }
 }
+
+val ALL_WEEK_DAYS = listOf(
+    "Пн", "Вт", "Ср",
+    "Чт", "Пт", "Сб", "Вс"
+)

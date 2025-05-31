@@ -18,13 +18,11 @@ import com.bumptech.glide.load.resource.bitmap.CenterCrop
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.glamvibe.glamvibeadmin.R
 import com.glamvibe.glamvibeadmin.databinding.FragmentServiceInformationBinding
-import com.glamvibe.glamvibeadmin.presentation.viewmodel.administrator.AdministratorViewModel
 import com.glamvibe.glamvibeadmin.presentation.viewmodel.service.ServiceViewModel
 import com.glamvibe.glamvibeadmin.presentation.viewmodel.toolbar.ToolbarViewModel
 import com.glamvibe.glamvibeadmin.utils.dpToPx
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
-import org.koin.androidx.viewmodel.ext.android.activityViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.koin.core.parameter.parametersOf
 
@@ -35,7 +33,6 @@ class ServiceInformationFragment : Fragment() {
 
     private lateinit var binding: FragmentServiceInformationBinding
     private val toolbarViewModel: ToolbarViewModel by activityViewModels<ToolbarViewModel>()
-    private val administratorViewModel: AdministratorViewModel by activityViewModel<AdministratorViewModel>()
 
     @SuppressLint("SetTextI18n")
     override fun onCreateView(
@@ -49,10 +46,7 @@ class ServiceInformationFragment : Fragment() {
 
         val serviceId = arguments?.getInt(ARG_ID)
 
-        val clientId = administratorViewModel.state.value.administrator?.id
-
-        val serviceViewModel by viewModel<ServiceViewModel> { parametersOf(serviceId, clientId) }
-
+        val serviceViewModel by viewModel<ServiceViewModel> { parametersOf(serviceId) }
 
         serviceViewModel.state
             .flowWithLifecycle(viewLifecycleOwner.lifecycle)

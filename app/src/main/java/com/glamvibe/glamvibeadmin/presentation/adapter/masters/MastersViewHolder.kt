@@ -9,6 +9,7 @@ import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.glamvibe.glamvibeadmin.R
 import com.glamvibe.glamvibeadmin.databinding.CardMasterBinding
 import com.glamvibe.glamvibeadmin.domain.model.Master
+import com.glamvibe.glamvibeadmin.utils.getYearWord
 
 class MastersViewHolder(private val binding: CardMasterBinding) :
     RecyclerView.ViewHolder(binding.root) {
@@ -43,20 +44,4 @@ class MastersViewHolder(private val binding: CardMasterBinding) :
                 .into(binding.masterPhoto)
         }
     }
-
-    private fun getYearWord(years: Int): String {
-        val mod10 = years % 10
-        val mod100 = years % 100
-
-        return if (mod100 in 11..14) {
-            "лет"
-        } else {
-            when (mod10) {
-                1 -> "год"
-                2, 3, 4 -> "года"
-                else -> "лет"
-            }
-        }
-    }
-
 }

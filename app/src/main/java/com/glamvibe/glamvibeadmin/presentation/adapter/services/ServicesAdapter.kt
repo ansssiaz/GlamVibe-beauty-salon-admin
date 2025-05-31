@@ -10,7 +10,7 @@ import com.glamvibe.glamvibeadmin.databinding.CardServiceBinding
 import com.glamvibe.glamvibeadmin.domain.model.Service
 
 class ServicesAdapter(
-    private val listener: ServicesListener,
+    private val listener: ServicesListener
 ) : ListAdapter<Service, ServiceViewHolder>(ServicesDiffCallback()) {
 
     interface ServicesListener {

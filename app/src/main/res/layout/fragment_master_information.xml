@@ -1,0 +1,208 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/ivory">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/master_photo"
+            android:layout_width="231dp"
+            android:layout_height="297dp"
+            android:layout_marginStart="114dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="114dp"
+            android:contentDescription="@string/master_image_content_description"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/empty_image"
+            tools:ignore="ImageContrastCheck" />
+
+        <TextView
+            android:id="@+id/full_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:fontFamily="@font/raleway"
+            android:textAlignment="center"
+            android:textColor="@color/brown"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/master_photo"
+            tools:text="Полищук Елизавета Дмитриевна" />
+
+        <TextView
+            android:id="@+id/birth_date_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:fontFamily="@font/raleway"
+            android:text="@string/birth_date_text"
+            android:textColor="@color/brown"
+            android:textSize="16sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/full_name" />
+
+        <TextView
+            android:id="@+id/birth_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:layout_marginEnd="16dp"
+            android:fontFamily="@font/lato"
+            android:textColor="@color/brown"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="@id/birth_date_text"
+            app:layout_constraintStart_toEndOf="@id/birth_date_text"
+            tools:text="11.08.2000" />
+
+        <TextView
+            android:id="@+id/email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="16dp"
+            android:fontFamily="@font/raleway"
+            android:textColor="@color/brown"
+            android:textSize="16sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/birth_date_text"
+            tools:text="Email: elizaveta1108@yandex.ru" />
+
+        <TextView
+            android:id="@+id/phone_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="16dp"
+            android:fontFamily="@font/raleway"
+            android:text="@string/phone_text"
+            android:textColor="@color/brown"
+            android:textSize="16sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/email" />
+
+        <TextView
+            android:id="@+id/phone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:layout_marginEnd="16dp"
+            android:fontFamily="@font/lato"
+            android:textColor="@color/brown"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="@id/phone_text"
+            app:layout_constraintStart_toEndOf="@id/phone_text"
+            tools:text="8(913)781-03-24" />
+
+        <TextView
+            android:id="@+id/date_of_employment_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="16dp"
+            android:fontFamily="@font/raleway"
+            android:text="@string/date_of_employment_text"
+            android:textColor="@color/brown"
+            android:textSize="16sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/phone_text" />
+
+        <TextView
+            android:id="@+id/date_of_employment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:layout_marginEnd="16dp"
+            android:fontFamily="@font/lato"
+            android:textColor="@color/brown"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="@id/date_of_employment_text"
+            app:layout_constraintStart_toEndOf="@id/date_of_employment_text"
+            tools:text="01.11.2021" />
+
+        <TextView
+            android:id="@+id/specialty"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="16dp"
+            android:fontFamily="@font/raleway"
+            android:textColor="@color/brown"
+            android:textSize="16sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/date_of_employment_text"
+            tools:text="Специальность: мастер маникюра и педикюра" />
+
+        <TextView
+            android:id="@+id/services_categories"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="16dp"
+            android:fontFamily="@font/raleway"
+            android:textColor="@color/brown"
+            android:textSize="16sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/specialty"
+            tools:text="Категории услуг: маникюр и педикюр" />
+
+        <TextView
+            android:id="@+id/work_experience"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="16dp"
+            android:fontFamily="@font/raleway"
+            android:textColor="@color/brown"
+            android:textSize="16sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/services_categories"
+            tools:text="Опыт работы: 4 года" />
+
+        <TextView
+            android:id="@+id/schedule_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:fontFamily="@font/raleway"
+            android:text="@string/master_schedule_text"
+            android:textAlignment="center"
+            android:textColor="@color/brown"
+            android:textSize="18sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/work_experience" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/schedule"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="16dp"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/schedule_text"
+            tools:itemCount="7"
+            tools:listitem="@layout/card_working_day" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

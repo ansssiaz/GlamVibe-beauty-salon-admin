@@ -119,4 +119,21 @@
     <string name="add">Добавить</string>
     <string name="edit">Редактировать</string>
     <string name="delete">Удалить</string>
+    <string name="birth_date_text">Дата рождения:</string>
+    <string name="phone_text">Телефон:</string>
+    <string name="date_of_employment_text">Дата приема на работу:</string>
+    <string name="master_schedule_text">График работы</string>
+    <string name="hint_master_name">Имя <font color="#FF0000">*</font></string>
+    <string name="hint_master_lastname">Фамилия <font color="#FF0000">*</font></string>
+    <string name="hint_master_patronymic">Отчество</string>
+    <string name="hint_master_birth_date">Дата рождения <font color="#FF0000">*</font></string>
+    <string name="hint_master_email">Email <font color="#FF0000">*</font></string>
+    <string name="hint_master_phone">Телефон <font color="#FF0000">*</font></string>
+    <string name="hint_master_date_of_employment">Дата приема на работу <font color="#FF0000">*</font></string>
+    <string name="hint_master_specialty">Специальность <font color="#FF0000">*</font></string>
+    <string name="master_categories_textview">Категории</string>
+    <string name="hint_master_work_experience">Опыт работы <font color="#FF0000">*</font></string>
+    <string name="hh_mm">чч:мм</string>
+    <string name="edit_master_title">Редактировать мастера</string>
+    <string name="new_master_title">Добавить мастера</string>
 </resources>
