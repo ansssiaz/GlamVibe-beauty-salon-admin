@@ -89,6 +89,9 @@
         <action
             android:id="@+id/action_mastersCatalogFragment_to_masterInformationFragment"
             app:destination="@id/masterInformationFragment" />
+        <action
+            android:id="@+id/action_mastersCatalogFragment_to_newMasterFragment"
+            app:destination="@id/newMasterFragment" />
     </fragment>
     <fragment
         android:id="@+id/newServiceFragment"
@@ -100,4 +103,9 @@
         android:name="com.glamvibe.glamvibeadmin.presentation.fragments.MasterInformationFragment"
         android:label="MasterInformationFragment"
         tools:layout="@layout/fragment_master_information"/>
+    <fragment
+        android:id="@+id/newMasterFragment"
+        android:name="com.glamvibe.glamvibeadmin.presentation.fragments.NewMasterFragment"
+        android:label="NewMasterFragment"
+        tools:layout="@layout/fragment_new_master"/>
 </navigation>

@@ -19,7 +19,7 @@ class MastersViewModel(
         loadMasters()
     }
 
-    private fun loadMasters() {
+    fun loadMasters() {
         _state.update { it.copy(status = Status.Loading) }
 
         viewModelScope.launch {

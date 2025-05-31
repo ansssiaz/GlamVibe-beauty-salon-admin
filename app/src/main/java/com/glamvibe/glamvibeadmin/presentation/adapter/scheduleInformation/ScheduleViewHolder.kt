@@ -1,4 +1,4 @@
-package com.glamvibe.glamvibeadmin.presentation.adapter.sheduleInformation
+package com.glamvibe.glamvibeadmin.presentation.adapter.scheduleInformation
 
 import android.annotation.SuppressLint
 import androidx.recyclerview.widget.RecyclerView

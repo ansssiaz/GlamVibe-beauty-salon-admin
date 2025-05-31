@@ -1,4 +1,4 @@
-package com.glamvibe.glamvibeadmin.presentation.adapter.sheduleInformation
+package com.glamvibe.glamvibeadmin.presentation.adapter.scheduleInformation
 
 import androidx.recyclerview.widget.DiffUtil
 import com.glamvibe.glamvibeadmin.domain.model.WorkingDay

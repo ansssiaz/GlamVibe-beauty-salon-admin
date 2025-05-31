@@ -16,7 +16,7 @@ import com.bumptech.glide.load.resource.bitmap.CenterCrop
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.glamvibe.glamvibeadmin.R
 import com.glamvibe.glamvibeadmin.databinding.FragmentMasterInformationBinding
-import com.glamvibe.glamvibeadmin.presentation.adapter.sheduleInformation.ScheduleAdapter
+import com.glamvibe.glamvibeadmin.presentation.adapter.scheduleInformation.ScheduleAdapter
 import com.glamvibe.glamvibeadmin.presentation.viewmodel.master.MasterViewModel
 import com.glamvibe.glamvibeadmin.presentation.viewmodel.toolbar.ToolbarViewModel
 import com.glamvibe.glamvibeadmin.utils.dpToPx
