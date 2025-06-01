@@ -19,7 +19,8 @@ class MastersViewHolder(private val binding: CardMasterBinding) :
     @SuppressLint("SetTextI18n")
     fun bind(master: Master) {
         binding.masterName.text =
-            if (master.patronymic != null) "${master.lastname} ${master.name} ${master.patronymic}" else "${master.lastname} ${master.name}"
+            if (master.patronymic != null) "${master.lastname} ${master.name} ${master.patronymic}"
+            else "${master.lastname} ${master.name}"
 
         binding.specialty.text = master.specialty
 

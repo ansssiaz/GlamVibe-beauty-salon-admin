@@ -20,10 +20,10 @@ import com.glamvibe.glamvibeadmin.presentation.adapter.scheduleInformation.Sched
 import com.glamvibe.glamvibeadmin.presentation.viewmodel.master.MasterViewModel
 import com.glamvibe.glamvibeadmin.presentation.viewmodel.toolbar.ToolbarViewModel
 import com.glamvibe.glamvibeadmin.utils.dpToPx
+import com.glamvibe.glamvibeadmin.utils.formatDate
 import com.glamvibe.glamvibeadmin.utils.getYearWord
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
-import kotlinx.datetime.LocalDate
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.koin.core.parameter.parametersOf
 
@@ -45,7 +45,7 @@ class MasterInformationFragment : Fragment() {
 
         toolbarViewModel.setTitle(getString(R.string.master_information_title))
 
-        val masterId = arguments?.getInt(ServiceInformationFragment.ARG_ID)
+        val masterId = arguments?.getInt(ARG_ID)
 
         val masterViewModel by viewModel<MasterViewModel> { parametersOf(masterId) }
 
@@ -107,12 +107,5 @@ class MasterInformationFragment : Fragment() {
             .launchIn(viewLifecycleOwner.lifecycleScope)
 
         return binding.root
-    }
-
-    private fun formatDate(date: LocalDate): String {
-        val day = date.dayOfMonth.toString().padStart(2, '0')
-        val month = date.month.value.toString().padStart(2, '0')
-        val year = date.year.toString()
-        return "$day.$month.$year"
     }
 }

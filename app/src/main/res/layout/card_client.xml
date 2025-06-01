@@ -1,7 +1,7 @@
 <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/appointment_item"
+    android:id="@+id/client_item"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_gravity="center"
@@ -61,20 +61,32 @@
             tools:text="Самойлова Инна Павловна" />
 
         <TextView
-            android:id="@+id/birth_date"
-            android:layout_width="0dp"
+            android:id="@+id/birth_date_text"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
             android:layout_marginTop="5dp"
             android:layout_marginEnd="10dp"
             android:fontFamily="@font/raleway"
+            android:text="@string/birth_date_text"
             android:textColor="@color/brown"
             android:textSize="16sp"
-            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/avatar"
             app:layout_constraintTop_toBottomOf="@id/full_name"
+            tools:ignore="TextContrastCheck,TextSizeCheck" />
+
+        <TextView
+            android:id="@+id/birth_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:fontFamily="@font/lato"
+            android:textColor="@color/brown"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="@id/birth_date_text"
+            app:layout_constraintStart_toEndOf="@id/birth_date_text"
             tools:ignore="TextContrastCheck,TextSizeCheck"
-            tools:text="Дата рождения: 11.02.2000" />
+            tools:text="22.05.2000" />
 
         <TextView
             android:id="@+id/phone_text"

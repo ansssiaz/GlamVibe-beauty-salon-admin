@@ -25,6 +25,9 @@
         <action
             android:id="@+id/action_bottomMenuFragment_to_mastersCatalogFragment"
             app:destination="@id/mastersCatalogFragment" />
+        <action
+            android:id="@+id/action_bottomMenuFragment_to_clientsFragment"
+            app:destination="@id/clientsFragment" />
     </fragment>
     <fragment
         android:id="@+id/newAppointmentFragment"
@@ -65,9 +68,9 @@
         tools:layout="@layout/fragment_registration">
     </fragment>
     <fragment
-        android:id="@+id/appointmentsFragment"
+        android:id="@+id/clientAppointmentsFragment"
         android:name="com.glamvibe.glamvibeadmin.presentation.fragments.ClientAppointmentsFragment"
-        android:label="AppointmentsFragment"
+        android:label="ClientAppointmentsFragment"
         tools:layout="@layout/fragment_client_appointments"/>
     <fragment
         android:id="@+id/servicesCatalogFragment"
@@ -108,4 +111,13 @@
         android:name="com.glamvibe.glamvibeadmin.presentation.fragments.NewMasterFragment"
         android:label="NewMasterFragment"
         tools:layout="@layout/fragment_new_master"/>
+    <fragment
+        android:id="@+id/clientsFragment"
+        android:name="com.glamvibe.glamvibeadmin.presentation.fragments.ClientsFragment"
+        tools:layout="@layout/fragment_clients"
+        android:label="ClientsFragment" >
+        <action
+            android:id="@+id/action_clientsFragment_to_clientAppointmentsFragment"
+            app:destination="@id/clientAppointmentsFragment" />
+    </fragment>
 </navigation>

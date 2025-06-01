@@ -22,12 +22,12 @@ class MenuFragment : Fragment() {
     ): View {
         binding = FragmentMenuBinding.inflate(inflater)
 
-        toolbarViewModel.setTitle(getString(R.string.catalog_title))
+        toolbarViewModel.setTitle(getString(R.string.main_menu_title))
 
-        binding.mastersItem.setOnClickListener {
+        binding.clientsItem.setOnClickListener {
             requireParentFragment().requireParentFragment().findNavController()
                 .navigate(
-                    R.id.action_bottomMenuFragment_to_mastersCatalogFragment
+                    R.id.action_bottomMenuFragment_to_clientsFragment
                 )
         }
 
@@ -36,6 +36,17 @@ class MenuFragment : Fragment() {
                 .navigate(
                     R.id.action_bottomMenuFragment_to_servicesCatalogFragment
                 )
+        }
+
+        binding.mastersItem.setOnClickListener {
+            requireParentFragment().requireParentFragment().findNavController()
+                .navigate(
+                    R.id.action_bottomMenuFragment_to_mastersCatalogFragment
+                )
+        }
+
+        binding.promotionsItem.setOnClickListener {
+            TODO()
         }
 
         return binding.root

@@ -16,17 +16,18 @@ import com.glamvibe.glamvibeadmin.domain.model.Appointment
 import com.glamvibe.glamvibeadmin.presentation.adapter.appointments.CurrentAppointmentsAdapter
 import com.glamvibe.glamvibeadmin.presentation.adapter.appointments.LastAppointmentsAdapter
 import com.glamvibe.glamvibeadmin.presentation.viewmodel.clientAppointments.ClientAppointmentsViewModel
-import com.glamvibe.glamvibeadmin.presentation.viewmodel.administrator.AdministratorViewModel
 import com.glamvibe.glamvibeadmin.presentation.viewmodel.toolbar.ToolbarViewModel
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
-import org.koin.androidx.viewmodel.ext.android.activityViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.koin.core.parameter.parametersOf
 
 class ClientAppointmentsFragment : Fragment() {
+    companion object {
+        const val ARG_ID = "ARG_ID"
+    }
+
     private val toolbarViewModel: ToolbarViewModel by activityViewModels<ToolbarViewModel>()
-    private val administratorViewModel: AdministratorViewModel by activityViewModel<AdministratorViewModel>()
     private lateinit var binding: FragmentClientAppointmentsBinding
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -35,9 +36,9 @@ class ClientAppointmentsFragment : Fragment() {
     ): View {
         binding = FragmentClientAppointmentsBinding.inflate(inflater)
 
-        toolbarViewModel.setTitle(getString(R.string.appointments_title))
+        toolbarViewModel.setTitle(getString(R.string.client_appointments_title))
 
-        val clientId = administratorViewModel.state.value.administrator?.id
+        val clientId = arguments?.getInt(ARG_ID)
 
         val clientAppointmentsViewModel: ClientAppointmentsViewModel by viewModel<ClientAppointmentsViewModel> {
             parametersOf(

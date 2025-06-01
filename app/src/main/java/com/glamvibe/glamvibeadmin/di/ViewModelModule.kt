@@ -12,6 +12,7 @@ import com.glamvibe.glamvibeadmin.presentation.viewmodel.newService.NewServiceVi
 import com.glamvibe.glamvibeadmin.presentation.viewmodel.promotion.PromotionViewModel
 import com.glamvibe.glamvibeadmin.presentation.viewmodel.promotions.PromotionsViewModel
 import com.glamvibe.glamvibeadmin.presentation.viewmodel.service.ServiceViewModel
+import com.glamvibe.glamvibeadmin.presentation.viewmodel.clients.ClientsViewModel
 import com.glamvibe.glamvibeadmin.presentation.viewmodel.services.ServicesViewModel
 import org.koin.core.module.dsl.viewModel
 import org.koin.dsl.module
@@ -67,5 +68,9 @@ val viewModelModule = module {
 
     viewModel {
         NewMasterViewModel(get(), get())
+    }
+
+    viewModel {
+        ClientsViewModel(get())
     }
 }
