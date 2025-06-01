@@ -1,6 +1,7 @@
 package com.glamvibe.glamvibeadmin.utils
 
 import android.content.Context
+import kotlinx.datetime.LocalDate
 
 fun dpToPx(dp: Int, context: Context): Int {
     return (dp * context.resources.displayMetrics.density).toInt()
@@ -19,4 +20,11 @@ fun getYearWord(years: Int): String {
             else -> "лет"
         }
     }
+}
+
+fun formatDate(date: LocalDate): String {
+    val day = date.dayOfMonth.toString().padStart(2, '0')
+    val month = date.month.value.toString().padStart(2, '0')
+    val year = date.year.toString()
+    return "$day.$month.$year"
 }

@@ -138,4 +138,9 @@
     <string name="new_master_title">Добавить мастера</string>
     <string name="email_text">Email:</string>
     <string name="hint_search_clients">Введите ФИО клиента</string>
+    <string name="clients_title">Клиенты</string>
+    <string name="client_appointments_title">Записи клиента</string>
+    <string name="title_clients_list">Клиенты</string>
+    <string name="title_promotions_list">Акции</string>
+    <string name="main_menu_title">Главное меню</string>
 </resources>
