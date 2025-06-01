@@ -14,20 +14,20 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.glamvibe.glamvibeadmin.R
-import com.glamvibe.glamvibeadmin.databinding.FragmentCatalogServicesBinding
-import com.glamvibe.glamvibeadmin.domain.model.Service
-import com.glamvibe.glamvibeadmin.presentation.adapter.services.ServicesAdapter
-import com.glamvibe.glamvibeadmin.presentation.viewmodel.services.ServicesViewModel
+import com.glamvibe.glamvibeadmin.databinding.FragmentPromotionsBinding
+import com.glamvibe.glamvibeadmin.domain.model.Promotion
+import com.glamvibe.glamvibeadmin.presentation.adapter.promotions.PromotionsAdapter
+import com.glamvibe.glamvibeadmin.presentation.viewmodel.promotions.PromotionsViewModel
 import com.glamvibe.glamvibeadmin.presentation.viewmodel.toolbar.ToolbarViewModel
 import kotlinx.coroutines.flow.filter
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class ServicesCatalogFragment : Fragment() {
-    private lateinit var binding: FragmentCatalogServicesBinding
+class PromotionsFragment : Fragment() {
+    private lateinit var binding: FragmentPromotionsBinding
     private val toolbarViewModel: ToolbarViewModel by activityViewModels<ToolbarViewModel>()
-    private val servicesViewModel: ServicesViewModel by viewModel<ServicesViewModel>()
+    private val promotionsViewModel: PromotionsViewModel by viewModel<PromotionsViewModel>()
     private lateinit var categoriesAdapter: ArrayAdapter<String>
     private var currentCategories: List<String> = emptyList()
 
@@ -41,27 +41,27 @@ class ServicesCatalogFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = FragmentCatalogServicesBinding.inflate(inflater)
+        binding = FragmentPromotionsBinding.inflate(inflater)
 
         toolbarViewModel.setAddVisibility(true)
 
-        toolbarViewModel.setTitle(getString(R.string.catalog_services_title))
+        toolbarViewModel.setTitle(getString(R.string.promotions_title))
 
         toolbarViewModel.addClicked
             .filter { it }
             .onEach {
                 findNavController().navigate(
-                    R.id.action_servicesCatalogFragment_to_newServiceFragment
+                    R.id.action_promotionsFragment_to_newPromotionFragment
                 )
                 toolbarViewModel.addClicked(false)
             }
             .launchIn(viewLifecycleOwner.lifecycleScope)
 
         requireActivity().supportFragmentManager.setFragmentResultListener(
-            NewServiceFragment.SERVICE_CREATED_RESULT,
+            NewPromotionFragment.PROMOTION_CREATED_RESULT,
             viewLifecycleOwner
         ) { _, _ ->
-            servicesViewModel.getServices()
+            promotionsViewModel.getPromotions()
         }
 
         categoriesAdapter = ArrayAdapter(
@@ -82,44 +82,44 @@ class ServicesCatalogFragment : Fragment() {
                 id: Long
             ) {
                 val selected = parent?.getItemAtPosition(position) as? String
-                servicesViewModel.filterServicesByCategory(selected)
+                promotionsViewModel.filterPromotionsByCategory(selected)
             }
 
             override fun onNothingSelected(parent: AdapterView<*>?) {
-                servicesViewModel.filterServicesByCategory(null)
+                promotionsViewModel.filterPromotionsByCategory(null)
             }
         }
 
-        val servicesAdapter = ServicesAdapter(
-            object : ServicesAdapter.ServicesListener {
-                override fun onEditClicked(service: Service) {
+        val promotionsAdapter = PromotionsAdapter(
+            object : PromotionsAdapter.PromotionsListener {
+                override fun onEditClicked(promotion: Promotion) {
                     findNavController().navigate(
-                        R.id.action_servicesCatalogFragment_to_newServiceFragment,
-                        bundleOf(NewServiceFragment.ARG_ID to service.id)
+                        R.id.action_promotionsFragment_to_newPromotionFragment,
+                        bundleOf(NewPromotionFragment.ARG_ID to promotion.id)
                     )
                 }
 
-                override fun onDeleteClicked(service: Service) {
-                    servicesViewModel.deleteService(service.id)
+                override fun onDeleteClicked(promotion: Promotion) {
+                    //promotionsViewModel.deletePromotion(promotion.id)
                 }
 
-                override fun onServiceImageClicked(service: Service) {
+                override fun onPromotionImageClicked(promotion: Promotion) {
                     findNavController().navigate(
-                        R.id.action_servicesCatalogFragment_to_serviceInformationFragment,
-                        bundleOf(ServiceInformationFragment.ARG_ID to service.id)
+                        R.id.action_promotionsFragment_to_promotionFragment,
+                        bundleOf(PromotionFragment.ARG_ID to promotion.id)
                     )
                 }
             }
         )
 
-        binding.listOfServices.isNestedScrollingEnabled = false
-        binding.listOfServices.layoutManager = LinearLayoutManager(requireContext())
-        binding.listOfServices.adapter = servicesAdapter
+        binding.listOfPromotions.isNestedScrollingEnabled = false
+        binding.listOfPromotions.layoutManager = LinearLayoutManager(requireContext())
+        binding.listOfPromotions.adapter = promotionsAdapter
 
-        servicesViewModel.state
+        promotionsViewModel.state
             .flowWithLifecycle(viewLifecycleOwner.lifecycle)
             .onEach { state ->
-                servicesAdapter.submitList(state.filteredServices)
+                promotionsAdapter.submitList(state.filteredPromotions)
 
                 val newCategories = listOf("Все категории") + state.categories
                 currentCategories = newCategories

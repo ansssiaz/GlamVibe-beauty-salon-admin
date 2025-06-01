@@ -2,6 +2,8 @@ package com.glamvibe.glamvibeadmin.utils
 
 import android.content.Context
 import kotlinx.datetime.LocalDate
+import java.time.format.TextStyle
+import java.util.Locale
 
 fun dpToPx(dp: Int, context: Context): Int {
     return (dp * context.resources.displayMetrics.density).toInt()
@@ -27,4 +29,11 @@ fun formatDate(date: LocalDate): String {
     val month = date.month.value.toString().padStart(2, '0')
     val year = date.year.toString()
     return "$day.$month.$year"
+}
+
+fun formatPromotionDate(date: LocalDate): String {
+    val day = date.dayOfMonth.toString().padStart(2, '0')
+    val month = date.month.getDisplayName(TextStyle.FULL, Locale.getDefault())
+    val year = date.year.toString()
+    return "$day $month $year"
 }

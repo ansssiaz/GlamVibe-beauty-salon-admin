@@ -44,7 +44,7 @@ import java.util.Locale
 class NewMasterFragment : Fragment() {
     companion object {
         const val ARG_ID = "ARG_ID"
-        const val MASTER_CREATED_RESULT = "SERVICE_CREATED_RESULT"
+        const val MASTER_CREATED_RESULT = "MASTER_CREATED_RESULT"
     }
 
     private lateinit var binding: FragmentNewMasterBinding

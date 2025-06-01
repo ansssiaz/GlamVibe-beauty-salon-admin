@@ -95,7 +95,7 @@ class MastersCatalogFragment : Fragment() {
                 override fun onEditClicked(master: Master) {
                     findNavController().navigate(
                         R.id.action_mastersCatalogFragment_to_newMasterFragment,
-                        bundleOf(MasterInformationFragment.ARG_ID to master.id)
+                        bundleOf(NewMasterFragment.ARG_ID to master.id)
                     )
                 }
 

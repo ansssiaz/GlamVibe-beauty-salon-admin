@@ -20,13 +20,11 @@ import com.glamvibe.glamvibeadmin.presentation.adapter.promotionServices.Promoti
 import com.glamvibe.glamvibeadmin.presentation.viewmodel.promotion.PromotionViewModel
 import com.glamvibe.glamvibeadmin.presentation.viewmodel.toolbar.ToolbarViewModel
 import com.glamvibe.glamvibeadmin.utils.dpToPx
+import com.glamvibe.glamvibeadmin.utils.formatPromotionDate
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
-import kotlinx.datetime.LocalDate
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.koin.core.parameter.parametersOf
-import java.time.format.TextStyle
-import java.util.Locale
 
 class PromotionFragment : Fragment() {
     companion object {
@@ -97,12 +95,5 @@ class PromotionFragment : Fragment() {
             .launchIn(viewLifecycleOwner.lifecycleScope)
 
         return binding.root
-    }
-
-    private fun formatPromotionDate(date: LocalDate): String {
-        val day = date.dayOfMonth.toString().padStart(2, '0')
-        val month = date.month.getDisplayName(TextStyle.FULL, Locale.getDefault())
-        val year = date.year.toString()
-        return "$day $month $year"
     }
 }

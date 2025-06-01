@@ -10,6 +10,7 @@ import com.glamvibe.glamvibeadmin.R
 import com.glamvibe.glamvibeadmin.databinding.CardPromotionBinding
 import com.glamvibe.glamvibeadmin.domain.model.Promotion
 import com.glamvibe.glamvibeadmin.utils.dpToPx
+import com.glamvibe.glamvibeadmin.utils.formatPromotionDate
 
 class PromotionsViewHolder(private val binding: CardPromotionBinding) :
     RecyclerView.ViewHolder(binding.root) {
@@ -39,5 +40,12 @@ class PromotionsViewHolder(private val binding: CardPromotionBinding) :
                 )
                 .into(binding.promotionImage)
         }
+
+        binding.promotionName.text = promotion.name
+
+        val formattedStartDate = formatPromotionDate(promotion.startDate)
+        val formattedEndDate = formatPromotionDate(promotion.endDate)
+
+        binding.promotionDates.text = "$formattedStartDate - $formattedEndDate"
     }
 }
