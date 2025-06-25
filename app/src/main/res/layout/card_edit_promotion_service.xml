@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:layout_marginStart="16dp"
+    android:layout_marginTop="10dp"
+    android:layout_marginEnd="16dp"
+    app:cardBackgroundColor="@color/champagne"
+    app:cardElevation="0dp"
+    app:strokeColor="@color/brown">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:padding="8dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <Spinner
+            android:id="@+id/spinner"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/spinner_background"
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp"
+            android:pointerIcon="arrow"
+            android:popupBackground="@color/champagne"
+            android:spinnerMode="dropdown"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+            <TextView
+                android:id="@+id/price_text_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/raleway"
+                android:textColor="@color/brown"
+                android:textSize="16sp"
+                android:layout_marginTop="8dp"
+                app:layout_constraintTop_toBottomOf="@id/spinner"
+                app:layout_constraintStart_toStartOf="parent"
+                android:text="@string/price"/>
+
+            <TextView
+                android:id="@+id/price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/lato"
+                android:textColor="@color/brown"
+                android:textSize="16sp"
+                android:layout_marginStart="5dp"
+                app:layout_constraintBottom_toBottomOf="@id/price_text_view"
+                app:layout_constraintStart_toEndOf="@id/price_text_view"
+                tools:text="2000"/>
+
+        <ImageView
+            android:id="@+id/price_ruble"
+            android:layout_width="12dp"
+            android:layout_height="12dp"
+            android:contentDescription="@string/ruble_content_description"
+            app:layout_constraintBottom_toBottomOf="@id/price"
+            app:layout_constraintStart_toEndOf="@id/price"
+            app:layout_constraintTop_toTopOf="@+id/price"
+            app:srcCompat="@drawable/baseline_currency_ruble_24" />
+
+        <TextView
+            android:id="@+id/price_with_promotion_text_view"
+            android:layout_width="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginStart="20dp"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/raleway"
+            android:textColor="@color/brown"
+            android:textSize="16sp"
+            app:layout_constraintTop_toBottomOf="@id/spinner"
+            app:layout_constraintStart_toEndOf="@id/price_ruble"
+            android:text="@string/price_with_promotion"/>
+
+        <EditText
+            android:id="@+id/price_with_promotion"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:autofillHints=""
+            android:fontFamily="@font/lato"
+            app:layout_constraintTop_toBottomOf="@id/spinner"
+            app:layout_constraintStart_toEndOf="@id/price_with_promotion_text_view"
+            android:hint="@string/rub"
+            android:inputType="number"
+            android:textColor="@color/brown"
+            android:textSize="16sp" />
+
+        <ImageView
+            android:id="@+id/price_with_promotion_ruble"
+            android:layout_width="12dp"
+            android:layout_height="12dp"
+            android:visibility="invisible"
+            android:contentDescription="@string/ruble_content_description"
+            app:layout_constraintBottom_toBottomOf="@id/price_with_promotion"
+            app:layout_constraintStart_toEndOf="@id/price_with_promotion"
+            app:layout_constraintTop_toTopOf="@+id/price_with_promotion"
+            app:srcCompat="@drawable/baseline_currency_ruble_24" />
+
+        <TextView
+            android:id="@+id/discount_text_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/raleway"
+            android:textColor="@color/brown"
+            android:textSize="16sp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintTop_toBottomOf="@id/price_text_view"
+            app:layout_constraintStart_toStartOf="parent"
+            android:text="@string/discount"/>
+
+        <TextView
+            android:id="@+id/discount_percentage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/lato"
+            android:textColor="@color/mauve"
+            android:textSize="16sp"
+            android:layout_marginStart="5dp"
+            app:layout_constraintBottom_toBottomOf="@id/discount_text_view"
+            app:layout_constraintStart_toEndOf="@id/discount_text_view"
+            tools:text="-10%"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</com.google.android.material.card.MaterialCardView>

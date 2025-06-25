@@ -22,7 +22,7 @@ class PromotionsViewModel(private val repository: PromotionsRepository) : ViewMo
 
         viewModelScope.launch {
             try {
-                val promotions = repository.getPromotions()
+                val promotions = repository.getPromotions().sortedByDescending { it.endDate }
 
                 val categories = promotions
                     .flatMap {
