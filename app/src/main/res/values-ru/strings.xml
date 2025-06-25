@@ -143,4 +143,16 @@
     <string name="title_clients_list">Клиенты</string>
     <string name="title_promotions_list">Акции</string>
     <string name="main_menu_title">Главное меню</string>
+    <string name="promotion_image_content_description">Изображение акции</string>
+    <string name="hint_promotion_name">Название акции <font color="#FF0000">*</font></string>
+    <string name="hint_promotion_start_date">Дата начала акции <font color="#FF0000">*</font></string>
+    <string name="hint_promotion_end_date">Дата окончания акции <font color="#FF0000">*</font></string>
+    <string name="hint_promotion_description">Описание акции <font color="#FF0000">*</font></string>
+    <string name="promotion_services_text">Услуги</string>
+    <string name="price">Цена: </string>
+    <string name="rub">руб</string>
+    <string name="price_with_promotion">Цена по акции:</string>
+    <string name="discount">"Скидка: "</string>
+    <string name="edit_promotion_title">Редактировать акцию</string>
+    <string name="new_promotion_title">Добавить акцию</string>
 </resources>

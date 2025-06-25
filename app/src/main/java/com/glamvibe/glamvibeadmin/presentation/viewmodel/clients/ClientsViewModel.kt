@@ -27,9 +27,8 @@ class ClientsViewModel(
         viewModelScope.launch {
             try {
                 val clients = clientsRepository.getClients()
-                    .map {
-                        it.toUser()
-                    }
+                    .map { it.toUser() }
+                    .sortedBy { it.lastname }
 
                 _state.update {
                     it.copy(

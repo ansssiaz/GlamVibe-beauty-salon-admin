@@ -46,7 +46,10 @@ class MenuFragment : Fragment() {
         }
 
         binding.promotionsItem.setOnClickListener {
-            TODO()
+            requireParentFragment().requireParentFragment().findNavController()
+                .navigate(
+                    R.id.action_bottomMenuFragment_to_promotionsFragment
+                )
         }
 
         return binding.root
